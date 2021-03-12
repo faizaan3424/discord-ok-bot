@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 client.login(process.env.token);
+okCount = 0
 
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
@@ -14,5 +15,8 @@ client.on("message", (message) => {
 });
 
 client.on("message", (message) => {
-    if(message.content.toLowerCase() == "ok") message.reply("ok");
+    if(message.content.toLowerCase() == "ok") {
+        okCount += 1;
+        message.reply("ok (" + okCount + "th time ok has been said on this server");
+    }
 });
