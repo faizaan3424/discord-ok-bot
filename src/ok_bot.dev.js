@@ -16,7 +16,7 @@ client.on("message", function (message) {
 client.on("message", function (message) {
   if (message.content.toLowerCase() == "ok") {
     okCount += 1;
-    var channel = client.channels.cache.get("819925987268755456");
-    channel.send(message.author + ", This is the " + okCount + "th time ok has been said.");
+    var okChannel = client.channels.cache.get("819925987268755456");
+    okChannel.send("@" + message.author + ", Ok counter: " + okCount);
   }
 });
