@@ -17,6 +17,6 @@ client.on("message", (message) => {
 client.on("message", (message) => {
     if(message.content.toLowerCase() == "ok") {
         okCount += 1;
-        message.reply("ok\n(" + okCount + "th time ok has been said on this server)");
+        message.reply("This is the " + okCount + "th time ok has been said on this server.");
     }
 });
