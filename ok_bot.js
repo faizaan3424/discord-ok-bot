@@ -19,6 +19,6 @@ client.on("message", (message) => {
         okCount += 1;
         const okChannel = client.channels.cache.get("819925987268755456");
         
-        okChannel.send("@" + message.author + ", Ok counter: " + okCount);
+        okChannel.send(`<@${message.author}>, Ok counter is now at: ${okCount}!`);
     }
 });
