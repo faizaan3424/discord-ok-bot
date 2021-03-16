@@ -32,6 +32,7 @@ client.on("message", (message) => {
         .catch(console.error);
         
         okCount += 1;
+        console.log(okCount);
         okChannel.send(`${message.author}, ok counter is now at ${numberWithCommas(okCount)}!`);
 
         okCounterChannel.send(okCount);

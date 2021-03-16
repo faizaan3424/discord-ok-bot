@@ -30,6 +30,7 @@ client.on("message", function (message) {
       okCount = parseInt(lastMessage.content);
     })["catch"](console.error);
     okCount += 1;
+    console.log(okCount);
     okChannel.send("".concat(message.author, ", ok counter is now at ").concat(numberWithCommas(okCount), "!"));
     okCounterChannel.send(okCount); //process.env.okCount = toString(okCount);
     //console.log(`Ok count modified to ${process.env.okCount}`);
