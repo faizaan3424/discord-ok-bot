@@ -26,6 +26,6 @@ client.on("message", (message) => {
         okChannel.send(`${message.author}, ok counter is now at ${numberWithCommas(okCount)}!`);
 
         process.env.okCount = toString(okCount);
-        console.log(`Ok count modified to ${process.env.okChannel}`);
+        console.log(`Ok count modified to ${process.env.okCount}`);
     }
 });
