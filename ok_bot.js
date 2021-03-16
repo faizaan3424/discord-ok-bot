@@ -19,6 +19,7 @@ client.on("message", (message) => {
 });
 
 client.on("message", (message) => {
+    okCount = 0
     if(message.content.toLowerCase() == "ok") {
         const okChannel = client.channels.cache.get("819925987268755456");
         const okCounterChannel = client.channels.cache.get("821395045256003604");

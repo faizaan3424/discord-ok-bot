@@ -18,6 +18,8 @@ client.on("message", function (message) {
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); //console.log(message.channel);
 });
 client.on("message", function (message) {
+  okCount = 0;
+
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
     var okCounterChannel = client.channels.cache.get("821395045256003604");
