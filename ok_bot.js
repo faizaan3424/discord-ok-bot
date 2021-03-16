@@ -4,6 +4,10 @@ client.login(process.env.token);
 console.log(process.env.okCount);
 okCount = parseInt(process.env.okCount)
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
     client.user.setActivity("ok...");
@@ -19,6 +23,6 @@ client.on("message", (message) => {
     if(message.content.toLowerCase() == "ok") {
         okCount += 1;
         const okChannel = client.channels.cache.get("819925987268755456");
-        okChannel.send(`${message.author}, Ok counter is now at ${okCount}!`);
+        okChannel.send(`${message.author}, Ok counter is now at ${numberWithCommas(okCount)}!`);
     }
 });
