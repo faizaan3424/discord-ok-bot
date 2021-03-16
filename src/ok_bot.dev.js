@@ -23,8 +23,7 @@ client.on("message", function (message) {
   if (message.content.toLowerCase() == "ok") {
     okCount += 1;
     var okChannel = client.channels.cache.get("819925987268755456");
-    okChannel.send("".concat(message.author, ", ok counter is now at ").concat(numberWithCommas(okCount), "!"));
-    process.env.okCount = toString(okCount);
-    console.log("Ok count modified to ".concat(process.env.okCount));
+    okChannel.send("".concat(message.author, ", ok counter is now at ").concat(numberWithCommas(okCount), "!")); //process.env.okCount = toString(okCount);
+    //console.log(`Ok count modified to ${process.env.okCount}`);
   }
 });
