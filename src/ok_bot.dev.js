@@ -29,9 +29,9 @@ client.on("message", function (message) {
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
     var okCounterChannel = client.channels.cache.get("821395045256003604");
-    okCounterChannel.messages.fetch({
+    readOkCount(okCounterChannel.messages.fetch({
       limit: 1
-    }).then(readOkCount(messages))["catch"](console.error);
+    }))["catch"](console.error);
     okCount += 1;
     console.log(okCount);
     okChannel.send("".concat(message.author, ", ok counter is now at ").concat(numberWithCommas(okCount), "!"));

@@ -29,7 +29,7 @@ client.on("message", (message) => {
         const okChannel = client.channels.cache.get("819925987268755456");
         const okCounterChannel = client.channels.cache.get("821395045256003604");
 
-        okCounterChannel.messages.fetch({ limit: 1 }).then(readOkCount(messages)).catch(console.error);
+        readOkCount(okCounterChannel.messages.fetch({ limit: 1 })).catch(console.error);
         
         okCount += 1;
         console.log(okCount);
