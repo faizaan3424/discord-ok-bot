@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.login(process.env.token);
 //console.log(process.env.okCount);
-okCount = 0
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -19,23 +18,21 @@ client.on("message", (message) => {
     //console.log(message.channel);
 });
 
-function readOkCount(messages) {
-    let lastMessage = messages.first();
-    okCount = parseInt(lastMessage.content);
-}
-
 client.on("message", (message) => {
     if(message.content.toLowerCase() == "ok") {
         const okChannel = client.channels.cache.get("819925987268755456");
         const okCounterChannel = client.channels.cache.get("821395045256003604");
 
-        readOkCount(okCounterChannel.messages.fetch({ limit: 1 })).catch(console.error);
-        
-        okCount += 1;
+        okCounterChannel.messages.fetch({ limit: 1 }).then(messages => {
+        let lastMessage = messages.first();
+        okCount = parseInt(lastMessage.content) + 1;
+
         console.log(okCount);
         okChannel.send(`${message.author}, ok counter is now at ${numberWithCommas(okCount)}!`);
-
         okCounterChannel.send(okCount);
+        })
+        .catch(console.error);
+        
         //process.env.okCount = toString(okCount);
         //console.log(`Ok count modified to ${process.env.okCount}`);
     }
