@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 client.login(process.env.token);
-okCount = 0
+console.log(process.env.okCount);
 
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
