@@ -24,6 +24,6 @@ client.on("message", function (message) {
     okCount += 1;
     var okChannel = client.channels.cache.get("819925987268755456");
     okChannel.send("".concat(message.author, ", ok counter is now at ").concat(numberWithCommas(okCount), "!"));
-    process.env.okCount = parseString(okCount);
+    process.env.okCount = toString(okCount);
   }
 });

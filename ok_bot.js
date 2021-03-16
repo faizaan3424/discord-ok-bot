@@ -25,6 +25,6 @@ client.on("message", (message) => {
         const okChannel = client.channels.cache.get("819925987268755456");
         okChannel.send(`${message.author}, ok counter is now at ${numberWithCommas(okCount)}!`);
 
-        process.env.okCount = parseString(okCount)
+        process.env.okCount = toString(okCount)
     }
 });
