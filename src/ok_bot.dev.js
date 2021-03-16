@@ -5,7 +5,7 @@ var Discord = require('discord.js');
 var client = new Discord.Client();
 client.login(process.env.token);
 console.log(process.env.okCount);
-okCount = process.env.okCount;
+okCount = parseInt(process.env.okCount);
 client.on("ready", function () {
   console.log("Connected as: " + client.user.tag);
   client.user.setActivity("ok...");
