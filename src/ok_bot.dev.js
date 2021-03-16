@@ -5,8 +5,6 @@ var Discord = require('discord.js');
 var client = new Discord.Client();
 client.login(process.env.token); //console.log(process.env.okCount);
 
-okCount = parseInt(process.env.okCount);
-
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
