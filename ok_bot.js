@@ -13,7 +13,6 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-    const okChannel = client.channels.cache.get("819925987268755456");
     if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
     //console.log(message.channel);
 });
