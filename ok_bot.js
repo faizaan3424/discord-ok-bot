@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 client.login(process.env.token);
 console.log(process.env.okCount);
+okCount = process.env.okCount
 
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
@@ -16,8 +17,8 @@ client.on("message", (message) => {
 
 client.on("message", (message) => {
     if(message.content.toLowerCase() == "ok") {
-        process.env.okCount += 1;
+        okCount += 1;
         const okChannel = client.channels.cache.get("819925987268755456");
-        okChannel.send(`${message.author}, Ok counter is now at ${process.env.okCount}!`);
+        okChannel.send(`${message.author}, Ok counter is now at ${okCount}!`);
     }
 });
