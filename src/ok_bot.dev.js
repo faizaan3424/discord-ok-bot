@@ -4,7 +4,8 @@ var Discord = require('discord.js');
 
 var client = new Discord.Client();
 client.login(process.env.token); //console.log(process.env.okCount);
-//okCount = parseInt(process.env.okCount)
+
+okCount = parseInt(process.env.okCount);
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -26,7 +27,7 @@ client.on("message", function (message) {
       limit: 1
     }).then(function (messages) {
       var lastMessage = messages.first();
-      okCount = lastMessage.content;
+      okCount = parseInt(lastMessage.content);
     })["catch"](console.error);
     okCount += 1;
     okChannel.send("".concat(message.author, ", ok counter is now at ").concat(numberWithCommas(okCount), "!"));
