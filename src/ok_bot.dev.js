@@ -12,18 +12,9 @@ function numberWithCommas(x) {
 client.on("ready", function () {
   console.log("Connected as: " + client.user.tag);
   client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
-}); // React with cookie:
-
+});
 client.on("message", function (message) {
-  var cookieChannel = client.channels.cache.get("766654092969771018");
-  if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") message.react('<:ban_hammer:789631435002216488:>').then(console.log)["catch"](console.error);
-}); // Delete non-ok messages:
-
-client.on("message", function (message) {
-  if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); //console.log(message.channel);
-}); // Count ok's
-
-client.on("message", function (message) {
+  // Count ok's
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
     var okCounterChannel = client.channels.cache.get("821395045256003604");
@@ -37,5 +28,10 @@ client.on("message", function (message) {
       okCounterChannel.send(okCount);
     })["catch"](console.error); //process.env.okCount = toString(okCount);
     //console.log(`Ok count modified to ${process.env.okCount}`);
-  }
+  } // Delete non-ok messages:
+
+
+  if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // React with cookie:
+
+  if (message.channel == "766654092969771018") message.react('<:ban_hammer:789631435002216488:>').then(console.log)["catch"](console.error);
 });
