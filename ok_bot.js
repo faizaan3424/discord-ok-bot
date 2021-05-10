@@ -59,7 +59,7 @@ client.on("message", (message) => {
     else if(message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
         message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
         const d = new Date(message.createdTimestamp);
-        date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
+        date = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
         message.reply(`Message sent at: ${date}`)
     }
 });
