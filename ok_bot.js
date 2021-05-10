@@ -40,10 +40,9 @@ client.on("message", (message) => {
         //message.reply("no u")
         message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     }
-});
 
-// Give last message cookie:
-setInterval(() => {1
+    // Give last message cookie:
+    let interval = setInterval(() => {
     let date = new Date();
     if(date.getHours === 13 && date.getMinutes === 22) {
         const cookies = [
@@ -67,3 +66,4 @@ setInterval(() => {1
         console.log(date)
     }
 },30000)
+});
