@@ -49,7 +49,7 @@ client.on("message", function (message) {
           //const dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
 
           message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-          message.reply("This message sent at: ".concat(dateNow, ". The last message was sent at: ", "dateLast"));
+          message.reply("This message sent at: ".concat(dateNow, ". The content was sent : ").concat(currentCookieMessage.content));
         });
       }
 });
