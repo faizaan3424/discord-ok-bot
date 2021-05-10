@@ -14,8 +14,7 @@ client.on("ready", function () {
   client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
 });
 client.on("message", function (message) {
-  var cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"]; // Count ok's
-
+  // Count ok's
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
     var okCounterChannel = client.channels.cache.get("821395045256003604");
@@ -36,27 +35,20 @@ client.on("message", function (message) {
   else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {
       //message.reply("no u")
       message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-    } //TODO: For dev channel
-    else if (message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
-        var cookieChannel = client.channels.cache.get("756599993481297951");
-        cookieChannel.messages.fetch({
-          limit: 2
-        }).then(function (messages) {
-          //Get message dates
-          var cookieMessages = [];
-          messages.forEach(function (message) {
-            cookieMessages.push(message);
-          });
-          var lastCookieMessage = cookieMessages[1];
-          var currentCookieMessage = cookieMessages[0];
-          var d = new Date(currentCookieMessage.createdTimestamp);
-          var dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
-          d = new Date(lastCookieMessage.createdTimestamp);
-          var dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]; //Check for winning message
-          //if(dateNow[0] < 17 && )
+    }
+}); // Give last message cookie:
 
-          message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-          message.reply("This message sent at: ".concat(dateNow, ". The last was sent at: ").concat(d));
-        });
-      }
-});
+client.setInterval(function () {
+  var date = new Date();
+
+  if (date.getHours === 0 && date.getMinutes === 0) {
+    var _cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"];
+    var cookieChannel = client.channels.cache.get("756599993481297951");
+    cookieChannel.messages.fetch({
+      limit: 1
+    }).then(function (messages) {
+      var cookieMessage = messages.first();
+      cookieMessage.react(_cookies[Math.floor(Math.random() * _cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+    });
+  }
+}, 30000);
