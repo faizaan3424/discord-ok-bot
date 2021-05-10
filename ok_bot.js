@@ -9,13 +9,13 @@ function numberWithCommas(x) {
 
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
-    client.user.setActivity("please help! Staff has kidnapped me and made me their slave...");
+    client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
 });
 
 // React with cookie:
 client.on("message", (message) => {
     const cookieChannel = client.channels.cache.get("841307474626871296");
-    if(message.channel == "841307474626871296") cookieChannel.send("test");
+    if(message.channel == "841307474626871296") message.react('🤔').then(console.log).catch(console.error);
 });
 
 // Delete non-ok messages:
