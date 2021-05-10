@@ -59,6 +59,7 @@ client.on("message", (message) => {
     else if(message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
         const cookieChannel = client.channels.cache.get("756599993481297951");
         cookieChannel.messages.fetch({limit: 2}).then(messages => {
+            //Get message dates
             let cookieMessages = [];
             messages.forEach(message => {
                 cookieMessages.push(message)
@@ -70,8 +71,10 @@ client.on("message", (message) => {
             d = new Date(lastCookieMessage.createdTimestamp);
             let dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
 
+            //Check for winning message
+            //if(dateNow[0] < 17 && )
             message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-            message.reply(`This message sent at: ${dateNow}. The last was sent at: ${dateLast}`)
+            message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
         })
     }
 });

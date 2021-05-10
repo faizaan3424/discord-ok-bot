@@ -42,6 +42,7 @@ client.on("message", function (message) {
         cookieChannel.messages.fetch({
           limit: 2
         }).then(function (messages) {
+          //Get message dates
           var cookieMessages = [];
           messages.forEach(function (message) {
             cookieMessages.push(message);
@@ -51,9 +52,11 @@ client.on("message", function (message) {
           var d = new Date(currentCookieMessage.createdTimestamp);
           var dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
           d = new Date(lastCookieMessage.createdTimestamp);
-          var dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
+          var dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]; //Check for winning message
+          //if(dateNow[0] < 17 && )
+
           message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-          message.reply("This message sent at: ".concat(dateNow, ". The last was sent at: ").concat(dateLast));
+          message.reply("This message sent at: ".concat(dateNow, ". The last was sent at: ").concat(d));
         });
       }
 });
