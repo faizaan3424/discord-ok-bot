@@ -60,5 +60,6 @@ client.on("message", (message) => {
         //message.reply("no u")
         
         message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+        message.reply(`Message sent at: ${message.createdTimestamp}`)
     }
 });
