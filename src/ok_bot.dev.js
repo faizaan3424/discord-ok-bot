@@ -39,9 +39,10 @@ client.on("message", function (message) {
 }); // Give last message cookie:
 
 client.setInterval(function () {
+  1;
   var date = new Date();
 
-  if (date.getHours === 0 && date.getMinutes === 0) {
+  if (date.getHours === 13 && date.getMinutes === 22) {
     var _cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"];
     var cookieChannel = client.channels.cache.get("756599993481297951");
     cookieChannel.messages.fetch({

@@ -43,9 +43,9 @@ client.on("message", (message) => {
 });
 
 // Give last message cookie:
-client.setInterval(() => {
+client.setInterval(() => {1
     let date = new Date();
-    if(date.getHours === 0 && date.getMinutes === 0) {
+    if(date.getHours === 13 && date.getMinutes === 22) {
         const cookies = [
         "🍪",
         "<:cookie2:822168019953516585>",
