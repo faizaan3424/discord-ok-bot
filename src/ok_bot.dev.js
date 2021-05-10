@@ -51,5 +51,6 @@ client.setInterval(function () {
       var cookieMessage = messages.first();
       cookieMessage.react(_cookies[Math.floor(Math.random() * _cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
     });
+    console.log(date);
   }
 }, 30000);

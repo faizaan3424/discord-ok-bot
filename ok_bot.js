@@ -64,5 +64,6 @@ client.setInterval(() => {1
             cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
             //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
         })
+        console.log(date)
     }
 },30000)
