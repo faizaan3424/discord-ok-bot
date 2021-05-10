@@ -43,7 +43,7 @@ client.on("message", function (message) {
           limit: 2
         }).then(function (messages) {
           var lastCookieMessage = messages[1];
-          var currentCookieMessage = messages[0];
+          var currentCookieMessage = messages.first();
           var d = new Date(currentCookieMessage.createdTimestamp);
           var dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
           d = new Date(lastCookieMessage.createdTimestamp);

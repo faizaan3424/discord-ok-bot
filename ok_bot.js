@@ -59,12 +59,12 @@ client.on("message", (message) => {
     else if(message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
         const cookieChannel = client.channels.cache.get("756599993481297951");
         cookieChannel.messages.fetch({limit: 2,}).then(messages => {
-            const lastCookieMessage = messages[1]
-            const currentCookieMessage = messages[0]
+            const lastCookieMessage = messages[1];
+            const currentCookieMessage = messages.first();
             let d = new Date(currentCookieMessage.createdTimestamp);
-            const dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
+            const dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
             d = new Date(lastCookieMessage.createdTimestamp);
-            const dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
+            const dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
 
             message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
             message.reply(`This message sent at: ${dateNow}. The last message was sent at: ${dateLast}`)
