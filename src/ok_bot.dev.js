@@ -42,14 +42,14 @@ client.on("message", function (message) {
         cookieChannel.messages.fetch({
           limit: 2
         }).then(function (messages) {
-          var lastCookieMessage = messages[1];
+          //const lastCookieMessage = messages[1];
           var currentCookieMessage = messages.first();
           var d = new Date(currentCookieMessage.createdTimestamp);
-          var dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
-          d = new Date(lastCookieMessage.createdTimestamp);
-          var dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
+          var dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]; //d = new Date(lastCookieMessage.createdTimestamp);
+          //const dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
+
           message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-          message.reply("This message sent at: ".concat(dateNow, ". The last message was sent at: ").concat(dateLast));
+          message.reply("This message sent at: ".concat(dateNow, ". The last message was sent at: ", "dateLast"));
         });
       }
 });
