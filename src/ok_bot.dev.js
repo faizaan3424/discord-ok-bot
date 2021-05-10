@@ -38,8 +38,9 @@ client.on("message", function (message) {
       message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
     } // For dev channel:
     else if (message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
-        //message.reply("no u")
         message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-        message.reply("Message sent at: ".concat(message.createdTimestamp));
+        var d = new Date(message.createdTimestamp);
+        date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
+        message.reply("Message sent at: ".concat(date));
       }
 });
