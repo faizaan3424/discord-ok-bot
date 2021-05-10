@@ -11,17 +11,21 @@ function numberWithCommas(x) {
 
 client.on("ready", function () {
   console.log("Connected as: " + client.user.tag);
-  client.user.setActivity("ok...");
-});
+  client.user.setActivity("please help! Staff has kidnapped me and made me their slave...");
+}); // React with cookie:
+
+client.on("message", function (message) {
+  if (message.channel == "841307474626871296") message.react(":smile:"); //console.log(message.channel);
+}); // Delete non-ok messages:
+
 client.on("message", function (message) {
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); //console.log(message.channel);
-});
+}); // Count ok's
+
 client.on("message", function (message) {
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
     var okCounterChannel = client.channels.cache.get("821395045256003604");
-    console.log(message.channel);
-    if (message.channel.id == "841307474626871296") message.react("�");
     okCounterChannel.messages.fetch({
       limit: 1
     }).then(function (messages) {
