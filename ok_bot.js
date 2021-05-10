@@ -14,7 +14,7 @@ client.on("ready", () => {
 
 client.on("message", (message) => {
     const cookies = [
-        //TODO:"U+1F36A",
+        "🍪",
         "<:cookie2:822168019953516585>",
         "<:cookie3:832742413982105691>",
         "<:cookie4:841334090774347796>",

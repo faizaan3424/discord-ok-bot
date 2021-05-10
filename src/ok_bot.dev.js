@@ -14,8 +14,7 @@ client.on("ready", function () {
   client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
 });
 client.on("message", function (message) {
-  var cookies = [//TODO:"U+1F36A",
-  "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"]; // Count ok's
+  var cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"]; // Count ok's
 
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
