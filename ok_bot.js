@@ -61,7 +61,7 @@ client.on("message", (message) => {
         cookieChannel.messages.fetch({limit: 2}).then(messages => {
             let cookieMessages = [];
             messages.forEach(message => {
-                cookieMessages.append(message)
+                cookieMessages.push(message)
             });
             let lastCookieMessage = cookieMessages[1];
             let currentCookieMessage = cookieMessages[0]

@@ -44,7 +44,7 @@ client.on("message", function (message) {
         }).then(function (messages) {
           var cookieMessages = [];
           messages.forEach(function (message) {
-            cookieMessages.append(message);
+            cookieMessages.push(message);
           });
           var lastCookieMessage = cookieMessages[1];
           var currentCookieMessage = cookieMessages[0];
