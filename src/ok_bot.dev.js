@@ -34,6 +34,6 @@ client.on("message", function (message) {
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // React with cookie:
   else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {
       //message.reply("no u");
-      message.react('<:ban_hammer:789631435002216488:>');
+      message.react('<:ban_hammer:789631435002216488:>')["catch"](console.error);
     }
 });
