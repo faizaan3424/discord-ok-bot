@@ -67,7 +67,8 @@ client.on("message", (message) => {
             //const dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
 
             message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-            message.reply(`This message sent at: ${dateNow}. The last was: ${messages[1].content}`)
+            message.reply(`This message sent at: ${dateNow}. The content was: ${currentCookieMessage.content}`)
+            messages.forEach(message => cookieChannel.send(message.content));
         })
     }
 });
