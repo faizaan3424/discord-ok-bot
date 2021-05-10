@@ -13,6 +13,8 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
+    let lastCookieMessage;
+    let d;
     const cookies = [
         "🍪",
         "<:cookie2:822168019953516585>",
@@ -57,9 +59,15 @@ client.on("message", (message) => {
     }
     // For dev channel:
     else if(message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
+        if(!lastCookieMessage) {
+            lastCookieMessage = message
+        }
+        d = new Date(message.createdTimestamp);
+        dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
+        d = new Date(lastCookieMessage.createdTimestamp);
+        dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
+
         message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-        const d = new Date(message.createdTimestamp);
-        date = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
-        message.reply(`Message sent at: ${date}`)
+        message.reply(`This message sent at: ${dateNow}. The last message was sent at: ${dateLast}`)
     }
 });
