@@ -60,7 +60,8 @@ client.on("message", (message) => {
     // For dev channel:
     else if(message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
         if(!lastCookieMessage) {
-            lastCookieMessage = message
+            lastCookieMessage = message;
+            console.log(!lastCookieMessage);
         }
         d = new Date(message.createdTimestamp);
         dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
