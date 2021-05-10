@@ -15,8 +15,8 @@ client.on("ready", function () {
 }); // React with cookie:
 
 client.on("message", function (message) {
-  var cookieChannel = client.channels.cache.get("841307474626871296");
-  if (message.channel == "841307474626871296") message.react('🤔').then(console.log)["catch"](console.error);
+  var cookieChannel = client.channels.cache.get("766654092969771018");
+  if (message.channel.id == cookieChannel.id) message.react('🤔').then(console.log)["catch"](console.error);
 }); // Delete non-ok messages:
 
 client.on("message", function (message) {
@@ -32,7 +32,7 @@ client.on("message", function (message) {
     }).then(function (messages) {
       var lastMessage = messages.first();
       okCount = parseInt(lastMessage.content) + 1;
-      console.log(okCount);
+      console.log("Ok count is now at: ".concat(okCount));
       okChannel.send("".concat(message.author, ", ok counter is now at ").concat(numberWithCommas(okCount), "!"));
       okCounterChannel.send(okCount);
     })["catch"](console.error); //process.env.okCount = toString(okCount);
