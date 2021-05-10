@@ -13,6 +13,17 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
+    const cookie1 = "U+1F36A";
+    const cookie2 = "<:cookie2:822168019953516585>";
+    const cookie3 = "<:cookie3:832742413982105691>";
+    const cookie4 = "<:cookie4:841334090774347796>";
+    const cookie5 = "<:cookie5:841334348573048862>";
+    const cookie6 = "<:cookie6:841334585786761236>";
+    const cookie7 = "<:cookie7:841334692271751228>";
+    const cookie8 = "<:cookie8:841335151837446154>";
+    const cookie9 = "<:cookie9:841335245394935849>";
+    const cookie10 = "<:cookie10:841335325879435304>";
+
     // Count ok's
     if(message.content.toLowerCase() == "ok") {
         const okChannel = client.channels.cache.get("819925987268755456");
@@ -38,6 +49,6 @@ client.on("message", (message) => {
     // React with cookie:
     else if(message.channel == "766654092969771018" && message.author.id != "819932513144930314") {
         //message.reply("no u");
-        message.react('<:ban_hammer:789631435002216488:>').catch(console.error);
+        message.react(cookie1).catch(console.error);
     }
 });

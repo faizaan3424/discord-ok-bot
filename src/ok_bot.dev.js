@@ -14,7 +14,17 @@ client.on("ready", function () {
   client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
 });
 client.on("message", function (message) {
-  // Count ok's
+  var cookie1 = "U+1F36A";
+  var cookie2 = "<:cookie2:822168019953516585>";
+  var cookie3 = "<:cookie3:832742413982105691>";
+  var cookie4 = "<:cookie4:841334090774347796>";
+  var cookie5 = "<:cookie5:841334348573048862>";
+  var cookie6 = "<:cookie6:841334585786761236>";
+  var cookie7 = "<:cookie7:841334692271751228>";
+  var cookie8 = "<:cookie8:841335151837446154>";
+  var cookie9 = "<:cookie9:841335245394935849>";
+  var cookie10 = "<:cookie10:841335325879435304>"; // Count ok's
+
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
     var okCounterChannel = client.channels.cache.get("821395045256003604");
@@ -34,6 +44,6 @@ client.on("message", function (message) {
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // React with cookie:
   else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {
       //message.reply("no u");
-      message.react('<:ban_hammer:789631435002216488:>')["catch"](console.error);
+      message.react(cookie1)["catch"](console.error);
     }
 });
