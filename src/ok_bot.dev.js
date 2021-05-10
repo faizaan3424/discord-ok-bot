@@ -14,8 +14,6 @@ client.on("ready", function () {
   client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
 });
 client.on("message", function (message) {
-  var lastCookieMessage;
-  var d;
   var cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"]; // Count ok's
 
   if (message.content.toLowerCase() == "ok") {
@@ -40,15 +38,17 @@ client.on("message", function (message) {
       message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
     } // For dev channel:
     else if (message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
-        if (!lastCookieMessage) {
-          lastCookieMessage = message;
-          console.log(!lastCookieMessage);
-        }
-
-        d = new Date(message.createdTimestamp);
-        dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
-        d = new Date(lastCookieMessage.createdTimestamp);
-        dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
+        var cookieChannel = client.channels.cache.get("756599993481297951");
+        cookieChannel.messages.fetch({
+          limit: 2
+        }).then(function (messages) {
+          var lastCookieMessage = messages[1];
+          var currentCookieMessage = messages[0];
+          var d = new Date(currentCookieMessage.createdTimestamp);
+          dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
+          d = new Date(lastCookieMessage.createdTimestamp);
+          dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
+        });
         message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
         message.reply("This message sent at: ".concat(dateNow, ". The last message was sent at: ").concat(dateLast));
       }
