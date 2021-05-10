@@ -55,20 +55,23 @@ client.on("message", (message) => {
         
         message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     }
-    // For dev channel:
+    //TODO: For dev channel
     else if(message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
         const cookieChannel = client.channels.cache.get("756599993481297951");
         cookieChannel.messages.fetch({limit: 2}).then(messages => {
-            //const lastCookieMessage = messages[1];
-            let currentCookieMessage = messages.first();
+            let cookieMessages = [];
+            messages.forEach(message => {
+                cookieMessages.append(message)
+            });
+            let lastCookieMessage = cookieMessages[1];
+            let currentCookieMessage = cookieMessages[0]
             let d = new Date(currentCookieMessage.createdTimestamp);
             let dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
-            //d = new Date(lastCookieMessage.createdTimestamp);
-            //const dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
+            d = new Date(lastCookieMessage.createdTimestamp);
+            let dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()];
 
             message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-            message.reply(`This message sent at: ${dateNow}. The content was: ${currentCookieMessage.content}`)
-            messages.forEach(message => cookieChannel.send(message.content));
+            message.reply(`This message sent at: ${dateNow}. The last was sent at: ${dateLast}`)
         })
     }
 });
