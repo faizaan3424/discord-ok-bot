@@ -38,7 +38,7 @@ client.on("message", function (message) {
     }
 }); // Give last message cookie:
 
-client.setInterval(function () {
+setInterval(function () {
   1;
   var date = new Date();
 
