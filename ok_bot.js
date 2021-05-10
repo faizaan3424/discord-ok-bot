@@ -21,7 +21,7 @@ client.on("message", (message) => {
     if(message.content.toLowerCase() == "ok") {
         const okChannel = client.channels.cache.get("819925987268755456");
         const okCounterChannel = client.channels.cache.get("821395045256003604");
-
+        console.log(message.channel);
         if (message.channel.id == "841307474626871296") message.react("�");
 
         okCounterChannel.messages.fetch({ limit: 1 }).then(messages => {
