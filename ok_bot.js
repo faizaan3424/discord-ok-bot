@@ -33,7 +33,7 @@ client.on("message", (message) => {
     }
 
     // Delete non-ok messages:
-    else if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
+    if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
 
     // React with cookie:
     else if(message.channel == "766654092969771018" && message.author.id != "819932513144930314") {
