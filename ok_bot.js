@@ -34,7 +34,10 @@ client.on("message", (message) => {
 
     // Delete non-ok messages:
     if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
-    console.log(message.author)
+    console.log(message.author.username)
     // React with cookie:
-    if(message.channel == "766654092969771018") message.react('<:ban_hammer:789631435002216488:>').then(console.log).catch(console.error);
+    if(message.channel == "766654092969771018") {
+        message.reply("no u");
+        //message.react('<:ban_hammer:789631435002216488:>').then(console.log).catch(console.error);
+    }
 });
