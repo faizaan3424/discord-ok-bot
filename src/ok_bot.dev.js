@@ -20,6 +20,8 @@ client.on("message", function (message) {
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
     var okCounterChannel = client.channels.cache.get("821395045256003604");
+    var cookieChannel = client.channels.cache.get("841307474626871296");
+    if (message.channel == cookieChannel) message.react("�");
     okCounterChannel.messages.fetch({
       limit: 1
     }).then(function (messages) {
