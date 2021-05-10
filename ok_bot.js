@@ -65,9 +65,9 @@ client.on("message", (message) => {
             const dateNow = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
             d = new Date(lastCookieMessage.createdTimestamp);
             const dateLast = [d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds()]
-        })
 
-        message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-        message.reply(`This message sent at: ${dateNow}. The last message was sent at: ${dateLast}`)
+            message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+            message.reply(`This message sent at: ${dateNow}. The last message was sent at: ${dateLast}`)
+        })
     }
 });
