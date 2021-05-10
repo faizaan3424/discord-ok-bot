@@ -15,7 +15,7 @@ client.on("ready", () => {
 // React with cookie:
 client.on("message", (message) => {
     const cookieChannel = client.channels.cache.get("766654092969771018");
-    if(message.channel.id == cookieChannel.id) message.react('🤔').then(console.log).catch(console.error);
+    if(message.channel == "766654092969771018") message.react(':cookie:').then(console.log).catch(console.error);
 });
 
 // Delete non-ok messages:
