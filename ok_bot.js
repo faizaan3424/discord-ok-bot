@@ -69,7 +69,7 @@ client.on("message", (message) => {
                 const filter = (reaction, user) => user.id === client.user.id
                 cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
                     if (!collected.size) {
-                    console.log(`${cookieMessage.content} has ${hasCookie} cookies: I am reacting...`)
+                    console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
                     cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 }
                 }).catch(console.error);

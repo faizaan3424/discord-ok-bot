@@ -72,7 +72,7 @@ client.on("message", function (message) {
                 time: 1000
               }).then(function (collected) {
                 if (!collected.size) {
-                  console.log("".concat(cookieMessage.content, " has ").concat(hasCookie, " cookies: I am reacting..."));
+                  console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies: I am reacting..."));
                   cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
                 }
               })["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
