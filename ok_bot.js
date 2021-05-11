@@ -58,7 +58,7 @@ client.on("message", (message) => {
 
 
     // Give last message cookie:
-    //var interval = setInterval(async () => {
+    var interval = setInterval(async () => {
         let date = new Date();
         //console.log(date)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
@@ -66,10 +66,10 @@ client.on("message", (message) => {
             await delay(500);
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
                 let cookieMessage = messages.first();
-                console.log(cookieMessage.reactions);
+                console.log(cookieMessage.reactions.resolve().me);
                 cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             })
         //}
-//},3 * 1000)
+    },3 * 1000)
 });
