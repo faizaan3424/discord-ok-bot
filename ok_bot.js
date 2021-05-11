@@ -74,6 +74,7 @@ client.on("message", (message) => {
                     cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 }
                 }*/).catch(console.error);
+                cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             }).catch(console.error)
         //}
