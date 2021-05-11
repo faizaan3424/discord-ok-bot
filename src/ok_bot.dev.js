@@ -73,7 +73,6 @@ client.on("message", function (message) {
               }).then(function (collected) {
                 return console.log("Collected ".concat(collected.size, " reactions"));
               })["catch"](console.error);
-              console.log(cookieMessage.reactions.resolve("🍪").me);
               cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             })["catch"](console.error); //}
 
