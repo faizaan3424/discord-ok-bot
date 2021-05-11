@@ -36,14 +36,10 @@ client.on("message", function (message) {
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // React with cookie:
   else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {} //message.reply("no u")
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-    // Now, you can use the message variable inside
+    // Give last message cookie:
 
   var interval = setInterval(function () {
-    // use the message's channel (TextChannel) to send a new message
-    devChannel.send("123")["catch"](console.error); // add error handling here
-  }, 1 * 1000); // Give last message cookie:
-
-  setInterval(function () {
+    console.log(date);
     var date = new Date();
 
     if (date.getHours === 8 && date.getMinutes === 43, date.getSeconds === 0) {
@@ -54,7 +50,6 @@ client.on("message", function (message) {
         var cookieMessage = messages.first();
         cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
       });
-      console.log(date);
     }
   }, 500);
 });
