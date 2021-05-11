@@ -69,7 +69,10 @@ client.on("message", (message) => {
                 let cookieMessage = messages.first();
                 const filter = (reaction, user) => user.id === client.user.id
                 cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => hasCookie = collected.size).catch(console.error);
-                if (!hasCookie) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+                if (!hasCookie) {
+                    console.log(`${cookieMessage.content} has ${hasCookie} cookies: I am reacting...`)
+                    cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+                }
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             }).catch(console.error)
         //}
