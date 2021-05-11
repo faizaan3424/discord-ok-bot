@@ -13,8 +13,8 @@ function cookieReaction(messages) {
     const filter = (reaction, user) => user.id === client.user.id
     cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
         console.log(`${cookieMessage.content} has ${collected.size} cookies`);
-        cookieCount = collected.size;
-        console.log(`Cookie count inside is: ${cookieCount}`);
+        this.cookieCount = collected.size;
+        console.log(`Cookie count inside is: ${this.cookieCount}`);
     }
         /*{
         if (!collected.size) {

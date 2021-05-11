@@ -10,6 +10,8 @@ function numberWithCommas(x) {
 }
 
 function cookieReaction(messages) {
+  var _this = this;
+
   var cookieCount;
   var cookieMessage = messages.first();
 
@@ -21,8 +23,8 @@ function cookieReaction(messages) {
     time: 1000
   }).then(function (collected) {
     console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
-    cookieCount = collected.size;
-    console.log("Cookie count inside is: ".concat(cookieCount));
+    _this.cookieCount = collected.size;
+    console.log("Cookie count inside is: ".concat(_this.cookieCount));
   }
   /*{
   if (!collected.size) {
