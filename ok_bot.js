@@ -65,14 +65,14 @@ client.on("message", (message) => {
             const cookieChannel = client.channels.cache.get("756599993481297951");
             await delay(500);
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
-                let hasCookie = 0
                 let cookieMessage = messages.first();
                 const filter = (reaction, user) => user.id === client.user.id
-                cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {hasCookie = collected.size}).catch(console.error);
-                if (!hasCookie) {
+                cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
+                    if (!collected.size) {
                     console.log(`${cookieMessage.content} has ${hasCookie} cookies: I am reacting...`)
                     cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 }
+                }).catch(console.error);
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             }).catch(console.error)
         //}

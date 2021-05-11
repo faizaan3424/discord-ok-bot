@@ -62,7 +62,6 @@ client.on("message", function (message) {
             cookieChannel.messages.fetch({
               limit: 1
             }).then(function (messages) {
-              var hasCookie = 0;
               var cookieMessage = messages.first();
 
               var filter = function filter(reaction, user) {
@@ -72,14 +71,11 @@ client.on("message", function (message) {
               cookieMessage.awaitReactions(filter, {
                 time: 1000
               }).then(function (collected) {
-                hasCookie = collected.size;
-              })["catch"](console.error);
-
-              if (!hasCookie) {
-                console.log("".concat(cookieMessage.content, " has ").concat(hasCookie, " cookies: I am reacting..."));
-                cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-              } //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
-
+                if (!collected.size) {
+                  console.log("".concat(cookieMessage.content, " has ").concat(hasCookie, " cookies: I am reacting..."));
+                  cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
+                }
+              })["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             })["catch"](console.error); //}
 
           case 5:
