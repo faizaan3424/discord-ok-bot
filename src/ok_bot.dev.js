@@ -72,5 +72,5 @@ client.on("message", function (message) {
         }
       }
     });
-  }, 3 * 1000);
+  }, 1 * 1000);
 });

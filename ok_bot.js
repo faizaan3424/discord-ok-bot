@@ -70,5 +70,5 @@ client.on("message", (message) => {
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             })
         //}
-},3 * 1000)
+},1 * 1000)
 });
