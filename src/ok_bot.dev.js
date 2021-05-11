@@ -26,7 +26,7 @@ function cookieReaction(messages, cookies) {
     _this.cookieCount = collected.size;
     console.log("Cookie count inside is: ".concat(_this.cookieCount)); // If the message has no "cookie" reactions, then react with a random cookie emoji
 
-    if (!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
+    if (!_this.cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
   })["catch"](console.error); //console.log(`Cookie count outside is: ${cookieCount}`);
   //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
 }
