@@ -25,16 +25,9 @@ function cookieReaction(messages) {
     console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
     _this.cookieCount = collected.size;
     console.log("Cookie count inside is: ".concat(_this.cookieCount));
-  }
-  /*{
-  if (!collected.size) {
-  console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
-  cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-  }
-  }*/
-  )["catch"](console.error);
-  console.log("Cookie count outside is: ".concat(cookieCount));
-  cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+    if (!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
+  })["catch"](console.error);
+  console.log("Cookie count outside is: ".concat(cookieCount)); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
 }
 
 client.on("ready", function () {

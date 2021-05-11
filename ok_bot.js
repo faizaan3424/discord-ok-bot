@@ -15,15 +15,10 @@ function cookieReaction(messages) {
         console.log(`${cookieMessage.content} has ${collected.size} cookies`);
         this.cookieCount = collected.size;
         console.log(`Cookie count inside is: ${this.cookieCount}`);
-    }
-        /*{
-        if (!collected.size) {
-        console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
-        cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-    }
-    }*/).catch(console.error);
+        if(!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+    }).catch(console.error);
+
     console.log(`Cookie count outside is: ${cookieCount}`);
-    cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
 }
 
