@@ -72,8 +72,8 @@ client.on("message", function (message) {
                 time: 1000
               }).then(function (collected) {
                 return console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
-              })["catch"](console.error);
-              cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+              })["catch"](console.error); //cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+              //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             })["catch"](console.error); //}
 
           case 5:
