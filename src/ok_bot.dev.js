@@ -49,5 +49,5 @@ client.on("message", function (message) {
       var cookieMessage = messages.first();
       cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
     }); //}
-  }, 1 * 1000);
+  }, 3 * 1000);
 });
