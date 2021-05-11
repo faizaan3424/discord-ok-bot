@@ -71,7 +71,7 @@ client.on("message", function (message) {
               cookieMessage.awaitReactions(filter, {
                 time: 1000
               }).then(function (collected) {
-                return console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
+                console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
               }
               /*{
               if (!collected.size) {

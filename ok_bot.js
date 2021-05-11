@@ -67,7 +67,9 @@ client.on("message", (message) => {
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
                 let cookieMessage = messages.first();
                 const filter = (reaction, user) => user.id === client.user.id
-                cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => console.log(`${cookieMessage.content} has ${collected.size} cookies`)
+                cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
+                    console.log(`${cookieMessage.content} has ${collected.size} cookies`)
+                }
                     /*{
                     if (!collected.size) {
                     console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
