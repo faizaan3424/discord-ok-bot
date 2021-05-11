@@ -65,7 +65,7 @@ client.on("message", function (message) {
               var cookieMessage = messages.first();
 
               var filter = function filter(reaction, user) {
-                return (reaction.emoji.name === "🍪" || reaction.emoji.id === 822168019953516585 || reaction.emoji.id === 832742413982105691 || reaction.emoji.id === 841334090774347796 || reaction.emoji.id === 841334348573048862 || reaction.emoji.id === 841334585786761236 || reaction.emoji.id === 841334692271751228 || reaction.emoji.id === 841335151837446154 || reaction.emoji.id === 841335245394935849 || reaction.emoji.id === 841335325879435304) && user.id === client.user.id;
+                return user.id === client.user.id;
               };
 
               cookieMessage.awaitReactions(filter, {

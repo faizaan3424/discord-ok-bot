@@ -66,7 +66,7 @@ client.on("message", (message) => {
             await delay(500);
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
                 let cookieMessage = messages.first();
-                const filter = (reaction, user) => (reaction.emoji.name === "🍪" || reaction.emoji.id === 822168019953516585 || reaction.emoji.id === 832742413982105691 || reaction.emoji.id === 841334090774347796 || reaction.emoji.id === 841334348573048862 || reaction.emoji.id === 841334585786761236 || reaction.emoji.id === 841334692271751228 || reaction.emoji.id === 841335151837446154 || reaction.emoji.id === 841335245394935849 || reaction.emoji.id === 841335325879435304) && user.id === client.user.id
+                const filter = (reaction, user) => user.id === client.user.id
                 cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => console.log(`${cookieMessage.content} has ${collected.size} cookies`)).catch(console.error);
                 cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
