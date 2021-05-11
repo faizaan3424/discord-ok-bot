@@ -40,7 +40,7 @@ client.on("message", function (message) {
   setInterval(function () {
     var date = new Date();
 
-    if (date.getHours === 8 && date.getMinutes === 42, date.getSeconds === 0) {
+    if (date.getHours === 8 && date.getMinutes === 43, date.getSeconds === 0) {
       var cookieChannel = client.channels.cache.get("756599993481297951");
       cookieChannel.messages.fetch({
         limit: 1
@@ -50,5 +50,5 @@ client.on("message", function (message) {
       });
       console.log(date);
     }
-  }, 30000);
+  }, 500);
 });
