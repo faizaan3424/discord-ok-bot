@@ -58,9 +58,9 @@ client.on("message", (message) => {
 
     // Give last message cookie:
     var interval =  setInterval(() => {
-        console.log(date)
         let date = new Date();
-        if(date.getHours === 8 && date.getMinutes === 43, date.getSeconds === 0) {
+        console.log(date)
+        if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
                 let cookieMessage = messages.first()
