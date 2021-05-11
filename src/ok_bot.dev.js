@@ -38,16 +38,28 @@ client.on("message", function (message) {
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     // Give last message cookie:
 
-  var interval = setInterval(function () {
-    var date = new Date();
-    console.log(date); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
+  var interval = setInterval(function _callee() {
+    var date, cookieChannel;
+    return regeneratorRuntime.async(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            date = new Date();
+            console.log(date); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
-    var cookieChannel = client.channels.cache.get("756599993481297951");
-    cookieChannel.messages.fetch({
-      limit: 1
-    }).then(function (messages) {
-      var cookieMessage = messages.first();
-      cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
-    }); //}
+            cookieChannel = client.channels.cache.get("756599993481297951");
+            cookieChannel.messages.fetch({
+              limit: 1
+            }).then(function (messages) {
+              var cookieMessage = messages.first();
+              cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+            }); //}
+
+          case 4:
+          case "end":
+            return _context.stop();
+        }
+      }
+    });
   }, 3 * 1000);
 });

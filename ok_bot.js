@@ -57,7 +57,7 @@ client.on("message", (message) => {
 
 
     // Give last message cookie:
-    var interval = setInterval(() => {
+    var interval = setInterval(async () => {
         let date = new Date();
         console.log(date)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
