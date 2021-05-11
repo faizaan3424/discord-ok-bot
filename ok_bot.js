@@ -25,7 +25,7 @@ client.on("message", (message) => {
         "<:cookie9:841335245394935849>",
         "<:cookie10:841335325879435304>",
     ]
-    
+
     // Count ok's
     if(message.content.toLowerCase() == "ok") {
         const okChannel = client.channels.cache.get("819925987268755456");
@@ -51,7 +51,7 @@ client.on("message", (message) => {
     // React with cookie:
     else if(message.channel == "766654092969771018" && message.author.id != "819932513144930314") {
         //message.reply("no u")
-        message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+        //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     }
 
     // Give last message cookie:

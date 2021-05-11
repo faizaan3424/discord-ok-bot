@@ -33,10 +33,9 @@ client.on("message", function (message) {
 
 
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // React with cookie:
-  else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {
-      //message.reply("no u")
-      message.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-    } // Give last message cookie:
+  else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {} //message.reply("no u")
+    //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+    // Give last message cookie:
 
   var interval = setInterval(function () {
     var date = new Date();
