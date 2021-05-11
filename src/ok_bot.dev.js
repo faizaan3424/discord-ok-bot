@@ -34,9 +34,16 @@ function cookieReaction(messages, cookies) {
         case 4:
           // If the message has no "cookie" reactions, then react with a random cookie emoji
           console.log("Cookie count outside is: ".concat(cookieCount));
-          if (cookieCount == 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
 
-        case 6:
+          if (!(cookieCount == 0)) {
+            _context.next = 8;
+            break;
+          }
+
+          _context.next = 8;
+          return regeneratorRuntime.awrap(cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error));
+
+        case 8:
         case "end":
           return _context.stop();
       }
