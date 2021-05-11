@@ -10,26 +10,38 @@ function numberWithCommas(x) {
 }
 
 function cookieReaction(messages, cookies) {
-  var _this = this;
+  var cookieCount, cookieMessage, filter;
+  return regeneratorRuntime.async(function cookieReaction$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          cookieMessage = messages.first();
 
-  var cookieCount;
-  var cookieMessage = messages.first();
-
-  var filter = function filter(reaction, user) {
-    return user.id === client.user.id;
-  }; // Check for "cookie" reactions (reactions from bot that are cookie emojis)
+          filter = function filter(reaction, user) {
+            return user.id === client.user.id;
+          }; // Check for "cookie" reactions (reactions from bot that are cookie emojis)
 
 
-  cookieMessage.awaitReactions(filter, {
-    time: 1000
-  }).then(function (collected) {
-    console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
-    _this.cookieCount = collected.size;
-    console.log("Cookie count inside is: ".concat(_this.cookieCount));
-  })["catch"](console.error); // If the message has no "cookie" reactions, then react with a random cookie emoji
+          _context.next = 4;
+          return regeneratorRuntime.awrap(cookieMessage.awaitReactions(filter, {
+            time: 1000
+          }).then(function (collected) {
+            console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
+            cookieCount = collected.size;
+            console.log("Cookie count inside is: ".concat(cookieCount));
+          })["catch"](console.error));
 
-  console.log("Cookie count outside is: ".concat(cookieCount));
-  if (!this.cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
+        case 4:
+          // If the message has no "cookie" reactions, then react with a random cookie emoji
+          console.log("Cookie count outside is: ".concat(cookieCount));
+          if (!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
+
+        case 6:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
 }
 
 client.on("ready", function () {
@@ -70,15 +82,15 @@ client.on("message", function (message) {
 
   var interval = setInterval(function _callee() {
     var date, cookieChannel;
-    return regeneratorRuntime.async(function _callee$(_context) {
+    return regeneratorRuntime.async(function _callee$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
             date = new Date(); //console.log(date)
             //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
             cookieChannel = client.channels.cache.get("756599993481297951");
-            _context.next = 4;
+            _context2.next = 4;
             return regeneratorRuntime.awrap(delay(500));
 
           case 4:
@@ -90,7 +102,7 @@ client.on("message", function (message) {
 
           case 5:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
     });

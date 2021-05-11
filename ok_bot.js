@@ -7,7 +7,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function cookieReaction(messages, cookies) {
+async function cookieReaction(messages, cookies) {
     let cookieCount;
     let cookieMessage = messages.first();
     const filter = (reaction, user) => user.id === client.user.id
@@ -15,13 +15,13 @@ function cookieReaction(messages, cookies) {
     // Check for "cookie" reactions (reactions from bot that are cookie emojis)
     await cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
         console.log(`${cookieMessage.content} has ${collected.size} cookies`);
-        this.cookieCount = collected.size;
-        console.log(`Cookie count inside is: ${this.cookieCount}`);
+        cookieCount = collected.size;
+        console.log(`Cookie count inside is: ${cookieCount}`);
         }).catch(console.error);
     
     // If the message has no "cookie" reactions, then react with a random cookie emoji
     console.log(`Cookie count outside is: ${cookieCount}`);
-    if(!this.cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+    if(!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
 }
 
 client.on("ready", () => {
