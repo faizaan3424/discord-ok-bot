@@ -13,7 +13,7 @@ function cookieReaction(messages, cookies) {
     const filter = (reaction, user) => user.id === client.user.id
 
     // Check for "cookie" reactions (reactions from bot that are cookie emojis)
-    cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
+    await cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
         console.log(`${cookieMessage.content} has ${collected.size} cookies`);
         this.cookieCount = collected.size;
         console.log(`Cookie count inside is: ${this.cookieCount}`);
