@@ -14,6 +14,7 @@ client.on("ready", function () {
   client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
 });
 client.on("message", function (message) {
+  var devChannel = client.channels.cache.get("756599993481297951");
   var cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"]; // Count ok's
 
   if (message.content.toLowerCase() == "ok") {
@@ -37,13 +38,10 @@ client.on("message", function (message) {
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     // Now, you can use the message variable inside
 
-  if (message.content === "$loop") {
-    var interval = setInterval(function () {
-      // use the message's channel (TextChannel) to send a new message
-      message.channel.send("123")["catch"](console.error); // add error handling here
-    }, 1 * 1000);
-  } // Give last message cookie:
-
+  var interval = setInterval(function () {
+    // use the message's channel (TextChannel) to send a new message
+    devChannel.send("123")["catch"](console.error); // add error handling here
+  }, 1 * 1000); // Give last message cookie:
 
   setInterval(function () {
     var date = new Date();

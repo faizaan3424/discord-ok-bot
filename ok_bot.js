@@ -13,6 +13,7 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
+    const devChannel = client.channels.cache.get("756599993481297951");
     const cookies = [
         "🍪",
         "<:cookie2:822168019953516585>",
@@ -55,13 +56,11 @@ client.on("message", (message) => {
     }
 
      // Now, you can use the message variable inside
-    if (message.content === "$loop") { 
-        var interval = setInterval (function () {
-            // use the message's channel (TextChannel) to send a new message
-            message.channel.send("123")
-            .catch(console.error); // add error handling here
-        }, 1 * 1000); 
-    }
+    var interval = setInterval (function () {
+        // use the message's channel (TextChannel) to send a new message
+        devChannel.send("123")
+        .catch(console.error); // add error handling here
+    }, 1 * 1000); 
     // Give last message cookie:
     setInterval(() => {
         let date = new Date();
