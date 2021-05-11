@@ -58,7 +58,7 @@ client.on("message", (message) => {
 
 
     // Give last message cookie:
-    var interval = setInterval(async () => {
+    //var interval = setInterval(async () => {
         let date = new Date();
         //console.log(date)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
@@ -71,5 +71,5 @@ client.on("message", (message) => {
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             })
         //}
-},3 * 1000)
+//},3 * 1000)
 });
