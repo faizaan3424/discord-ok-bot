@@ -63,7 +63,7 @@ client.on("message", function (message) {
               limit: 1
             }).then(function (messages) {
               var cookieMessage = messages.first();
-              console.log(messages.reactions.size);
+              console.log(cookieMessage.reactions);
               cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             }); //}
 

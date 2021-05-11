@@ -66,7 +66,7 @@ client.on("message", (message) => {
             await delay(500);
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
                 let cookieMessage = messages.first();
-                console.log(messages.reactions.size);
+                console.log(cookieMessage.reactions);
                 cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
             })
