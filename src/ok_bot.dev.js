@@ -65,7 +65,7 @@ client.on("message", function (message) {
               var cookieMessage = messages.first();
 
               var filter = function filter(reaction, user) {
-                return user.id === client.user.id;
+                return reaction.emoji.name === "🍪" && user.id === client.user.id;
               };
 
               cookieMessage.awaitReactions(filter, {
