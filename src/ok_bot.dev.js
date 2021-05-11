@@ -9,6 +9,32 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function cookieReaction(messages) {
+  var cookieCount;
+  var cookieMessage = messages.first();
+
+  var filter = function filter(reaction, user) {
+    return user.id === client.user.id;
+  };
+
+  cookieMessage.awaitReactions(filter, {
+    time: 1000
+  }).then(function (collected) {
+    console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
+    cookieCount = collected.size;
+    console.log("Cookie count inside is: ".concat(cookieCount));
+  }
+  /*{
+  if (!collected.size) {
+  console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
+  cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+  }
+  }*/
+  )["catch"](console.error);
+  console.log("Cookie count outside is: ".concat(cookieCount));
+  cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+}
+
 client.on("ready", function () {
   console.log("Connected as: " + client.user.tag);
   client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
@@ -62,25 +88,7 @@ client.on("message", function (message) {
             cookieChannel.messages.fetch({
               limit: 1
             }).then(function (messages) {
-              var cookieMessage = messages.first();
-
-              var filter = function filter(reaction, user) {
-                return user.id === client.user.id;
-              };
-
-              cookieMessage.awaitReactions(filter, {
-                time: 1000
-              }).then(function (collected) {
-                console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
-              }
-              /*{
-              if (!collected.size) {
-              console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
-              cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-              }
-              }*/
-              )["catch"](console.error);
-              cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+              return cookieReaction(messages);
             })["catch"](console.error); //}
 
           case 5:

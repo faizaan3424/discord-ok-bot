@@ -7,6 +7,26 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function cookieReaction(messages) {
+    let cookieCount;
+    let cookieMessage = messages.first();
+    const filter = (reaction, user) => user.id === client.user.id
+    cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
+        console.log(`${cookieMessage.content} has ${collected.size} cookies`);
+        cookieCount = collected.size;
+        console.log(`Cookie count inside is: ${cookieCount}`);
+    }
+        /*{
+        if (!collected.size) {
+        console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
+        cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+    }
+    }*/).catch(console.error);
+    console.log(`Cookie count outside is: ${cookieCount}`);
+    cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+    //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+}
+
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
     client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
@@ -64,21 +84,7 @@ client.on("message", (message) => {
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
             await delay(500);
-            cookieChannel.messages.fetch({limit: 1}).then(messages => {
-                let cookieMessage = messages.first();
-                const filter = (reaction, user) => user.id === client.user.id
-                cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
-                    console.log(`${cookieMessage.content} has ${collected.size} cookies`)
-                }
-                    /*{
-                    if (!collected.size) {
-                    console.log(`${cookieMessage.content} has ${collected.size} cookies: I am reacting...`)
-                    cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-                }
-                }*/).catch(console.error);
-                cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-                //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
-            }).catch(console.error)
+            cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages)).catch(console.error)
         //}
     },1 * 1000)
 });
