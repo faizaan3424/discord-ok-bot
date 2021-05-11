@@ -66,10 +66,12 @@ client.on("message", (message) => {
             await delay(500);
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
                 let cookieMessage = messages.first();
+                const filter = (reaction, user) => (reaction.emoji.name === "🍪" || reaction.emoji.name === "<:cookie2:822168019953516585>" || reaction.emoji.name === "<:cookie3:832742413982105691>" || reaction.emoji.name === "<:cookie4:841334090774347796>" || reaction.emoji.name === "<:cookie5:841334348573048862>" || reaction.emoji.name === "<:cookie6:841334585786761236>" || reaction.emoji.name === "<:cookie7:841334692271751228>" || reaction.emoji.name === "<:cookie8:841335151837446154>" || reaction.emoji.name === "<:cookie9:841335245394935849>" || reaction.emoji.name === "<:cookie10:841335325879435304>") && user.id === client.user.id
+                cookieMessage.awaitReactions(filter, {time: 15000}).then(collected => console.log(`Collected ${collected.size} reactions`)).catch(console.error);
                 console.log(cookieMessage.reactions.resolve("🍪").me);
                 cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
                 //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
-            })
+            }).catch(console.error)
         //}
-    },3 * 1000)
+    },1 * 1000)
 });

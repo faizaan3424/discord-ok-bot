@@ -63,9 +63,19 @@ client.on("message", function (message) {
               limit: 1
             }).then(function (messages) {
               var cookieMessage = messages.first();
+
+              var filter = function filter(reaction, user) {
+                return (reaction.emoji.name === "🍪" || reaction.emoji.name === "<:cookie2:822168019953516585>" || reaction.emoji.name === "<:cookie3:832742413982105691>" || reaction.emoji.name === "<:cookie4:841334090774347796>" || reaction.emoji.name === "<:cookie5:841334348573048862>" || reaction.emoji.name === "<:cookie6:841334585786761236>" || reaction.emoji.name === "<:cookie7:841334692271751228>" || reaction.emoji.name === "<:cookie8:841335151837446154>" || reaction.emoji.name === "<:cookie9:841335245394935849>" || reaction.emoji.name === "<:cookie10:841335325879435304>") && user.id === client.user.id;
+              };
+
+              cookieMessage.awaitReactions(filter, {
+                time: 15000
+              }).then(function (collected) {
+                return console.log("Collected ".concat(collected.size, " reactions"));
+              })["catch"](console.error);
               console.log(cookieMessage.reactions.resolve("🍪").me);
               cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
-            }); //}
+            })["catch"](console.error); //}
 
           case 5:
           case "end":
@@ -73,5 +83,5 @@ client.on("message", function (message) {
         }
       }
     });
-  }, 3 * 1000);
+  }, 1 * 1000);
 });
