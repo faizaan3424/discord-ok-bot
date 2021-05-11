@@ -72,7 +72,7 @@ client.on("message", function (message) {
               cookieMessage.awaitReactions(filter, {
                 time: 1000
               }).then(function (collected) {
-                return hasCookie = collected.size;
+                hasCookie = collected.size;
               })["catch"](console.error);
 
               if (!hasCookie) {
