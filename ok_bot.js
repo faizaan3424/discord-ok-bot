@@ -55,16 +55,16 @@ client.on("message", (message) => {
     }
 
     // Give last message cookie:
-    let interval = setInterval(() => {
-    let date = new Date();
-    if(date.getHours === 13 && date.getMinutes === 22) {
-        const cookieChannel = client.channels.cache.get("756599993481297951");
-        cookieChannel.messages.fetch({limit: 1}).then(messages => {
-            let cookieMessage = messages.first()
-            cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-            //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
-        })
-        console.log(date)
-    }
+    setInterval(() => {
+        let date = new Date();
+        if(date.getHours === 8 && date.getMinutes === 42, date.getSeconds === 0) {
+            const cookieChannel = client.channels.cache.get("756599993481297951");
+            cookieChannel.messages.fetch({limit: 1}).then(messages => {
+                let cookieMessage = messages.first()
+                cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+                //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+            })
+            console.log(date)
+        }
 },30000)
 });

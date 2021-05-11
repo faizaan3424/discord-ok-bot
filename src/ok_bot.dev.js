@@ -37,10 +37,10 @@ client.on("message", function (message) {
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     // Give last message cookie:
 
-  var interval = setInterval(function () {
+  setInterval(function () {
     var date = new Date();
 
-    if (date.getHours === 13 && date.getMinutes === 22) {
+    if (date.getHours === 8 && date.getMinutes === 42, date.getSeconds === 0) {
       var cookieChannel = client.channels.cache.get("756599993481297951");
       cookieChannel.messages.fetch({
         limit: 1
