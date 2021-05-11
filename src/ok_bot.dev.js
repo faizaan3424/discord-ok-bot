@@ -17,21 +17,19 @@ function cookieReaction(messages, cookies) {
 
   var filter = function filter(reaction, user) {
     return user.id === client.user.id;
-  };
+  }; // Check for "cookie" reactions (reactions from bot that are cookie emojis)
+
 
   cookieMessage.awaitReactions(filter, {
     time: 1000
   }).then(function (collected) {
     console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
     _this.cookieCount = collected.size;
-    console.log("Cookie count inside is: ".concat(_this.cookieCount)); // If the message has no "cookie" reactions, then react with a random cookie emoji
+    console.log("Cookie count inside is: ".concat(_this.cookieCount));
+  })["catch"](console.error); // If the message has no "cookie" reactions, then react with a random cookie emoji
 
-    if (!_this.cookieCount) {
-      console.log("CC: ".concat(_this.cookieCount));
-      cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-    }
-  })["catch"](console.error); //console.log(`Cookie count outside is: ${cookieCount}`);
-  //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+  console.log("Cookie count outside is: ".concat(cookieCount));
+  if (!this.cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
 }
 
 client.on("ready", function () {

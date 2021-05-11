@@ -11,16 +11,17 @@ function cookieReaction(messages, cookies) {
     let cookieCount;
     let cookieMessage = messages.first();
     const filter = (reaction, user) => user.id === client.user.id
+
+    // Check for "cookie" reactions (reactions from bot that are cookie emojis)
     cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
         console.log(`${cookieMessage.content} has ${collected.size} cookies`);
         this.cookieCount = collected.size;
         console.log(`Cookie count inside is: ${this.cookieCount}`);
-        // If the message has no "cookie" reactions, then react with a random cookie emoji
-        if(!this.cookieCount) {console.log(`CC: ${this.cookieCount}`);cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);}
-    }).catch(console.error);
-
-    //console.log(`Cookie count outside is: ${cookieCount}`);
-    //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+        }).catch(console.error);
+    
+    // If the message has no "cookie" reactions, then react with a random cookie emoji
+    console.log(`Cookie count outside is: ${cookieCount}`);
+    if(!this.cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
 }
 
 client.on("ready", () => {
