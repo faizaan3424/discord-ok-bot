@@ -14,6 +14,7 @@ client.on("ready", () => {
 
 client.on("message", (message) => {
     const devChannel = client.channels.cache.get("756599993481297951");
+    const delay = ms => new Promise(res => setTimeout(res, ms));
     const cookies = [
         "🍪",
         "<:cookie2:822168019953516585>",
@@ -62,6 +63,7 @@ client.on("message", (message) => {
         console.log(date)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
+            await delay(500);
             cookieChannel.messages.fetch({limit: 1}).then(messages => {
                 let cookieMessage = messages.first()
                 cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
