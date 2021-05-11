@@ -9,7 +9,7 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function cookieReaction(messages) {
+function cookieReaction(messages, cookies) {
   var _this = this;
 
   var cookieCount;
@@ -24,7 +24,8 @@ function cookieReaction(messages) {
   }).then(function (collected) {
     console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
     _this.cookieCount = collected.size;
-    console.log("Cookie count inside is: ".concat(_this.cookieCount));
+    console.log("Cookie count inside is: ".concat(_this.cookieCount)); // If the message has no "cookie" reactions, then react with a random cookie emoji
+
     if (!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
   })["catch"](console.error); //console.log(`Cookie count outside is: ${cookieCount}`);
   //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
@@ -83,7 +84,7 @@ client.on("message", function (message) {
             cookieChannel.messages.fetch({
               limit: 1
             }).then(function (messages) {
-              return cookieReaction(messages);
+              return cookieReaction(messages, cookies);
             })["catch"](console.error); //}
 
           case 5:

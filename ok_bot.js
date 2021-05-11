@@ -7,7 +7,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function cookieReaction(messages) {
+function cookieReaction(messages, cookies) {
     let cookieCount;
     let cookieMessage = messages.first();
     const filter = (reaction, user) => user.id === client.user.id
@@ -15,6 +15,7 @@ function cookieReaction(messages) {
         console.log(`${cookieMessage.content} has ${collected.size} cookies`);
         this.cookieCount = collected.size;
         console.log(`Cookie count inside is: ${this.cookieCount}`);
+        // If the message has no "cookie" reactions, then react with a random cookie emoji
         if(!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     }).catch(console.error);
 
@@ -79,7 +80,7 @@ client.on("message", (message) => {
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
             await delay(500);
-            cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages)).catch(console.error)
+            cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages, cookies)).catch(console.error)
         //}
     },1 * 1000)
 });
