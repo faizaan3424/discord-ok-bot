@@ -34,7 +34,7 @@ function cookieReaction(messages, cookies) {
         case 4:
           // If the message has no "cookie" reactions, then react with a random cookie emoji
           console.log("Cookie count outside is: ".concat(cookieCount));
-          if (!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
+          if (cookieCount == 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
 
         case 6:
         case "end":
@@ -90,17 +90,13 @@ client.on("message", function (message) {
             //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
             cookieChannel = client.channels.cache.get("756599993481297951");
-            _context2.next = 4;
-            return regeneratorRuntime.awrap(delay(500));
-
-          case 4:
             cookieChannel.messages.fetch({
               limit: 1
             }).then(function (messages) {
               return cookieReaction(messages, cookies);
             })["catch"](console.error); //}
 
-          case 5:
+          case 3:
           case "end":
             return _context2.stop();
         }

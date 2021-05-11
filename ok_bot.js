@@ -21,7 +21,7 @@ async function cookieReaction(messages, cookies) {
     
     // If the message has no "cookie" reactions, then react with a random cookie emoji
     console.log(`Cookie count outside is: ${cookieCount}`);
-    if(!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+    if(cookieCount == 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
 }
 
 client.on("ready", () => {
@@ -80,7 +80,6 @@ client.on("message", (message) => {
         //console.log(date)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
-            await delay(500);
             cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages, cookies)).catch(console.error)
         //}
     },1 * 1000)
