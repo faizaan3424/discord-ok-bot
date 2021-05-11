@@ -54,6 +54,14 @@ client.on("message", (message) => {
         //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     }
 
+     // Now, you can use the message variable inside
+    if (message.content === "$loop") { 
+        var interval = setInterval (function () {
+            // use the message's channel (TextChannel) to send a new message
+            message.channel.send("123")
+            .catch(console.error); // add error handling here
+        }, 1 * 1000); 
+    }
     // Give last message cookie:
     setInterval(() => {
         let date = new Date();
