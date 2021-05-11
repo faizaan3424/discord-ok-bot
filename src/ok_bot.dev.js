@@ -40,16 +40,14 @@ client.on("message", function (message) {
 
   var interval = setInterval(function () {
     var date = new Date();
-    console.log(date);
+    console.log(date); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
-    if (date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
-      var cookieChannel = client.channels.cache.get("756599993481297951");
-      cookieChannel.messages.fetch({
-        limit: 1
-      }).then(function (messages) {
-        var cookieMessage = messages.first();
-        cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
-      });
-    }
-  }, 500);
+    var cookieChannel = client.channels.cache.get("756599993481297951");
+    cookieChannel.messages.fetch({
+      limit: 1
+    }).then(function (messages) {
+      var cookieMessage = messages.first();
+      cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+    }); //}
+  }, 1 * 1000);
 });
