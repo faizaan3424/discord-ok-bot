@@ -26,8 +26,8 @@ function cookieReaction(messages) {
     _this.cookieCount = collected.size;
     console.log("Cookie count inside is: ".concat(_this.cookieCount));
     if (!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
-  })["catch"](console.error);
-  console.log("Cookie count outside is: ".concat(cookieCount)); //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
+  })["catch"](console.error); //console.log(`Cookie count outside is: ${cookieCount}`);
+  //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
 }
 
 client.on("ready", function () {

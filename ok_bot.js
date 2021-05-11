@@ -18,7 +18,7 @@ function cookieReaction(messages) {
         if(!cookieCount) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     }).catch(console.error);
 
-    console.log(`Cookie count outside is: ${cookieCount}`);
+    //console.log(`Cookie count outside is: ${cookieCount}`);
     //message.reply(`This message sent at: ${dateNow}. The last was sent at: ${d}`)
 }
 
