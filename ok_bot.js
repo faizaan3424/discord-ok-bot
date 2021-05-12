@@ -12,7 +12,10 @@ async function cookieReaction(messages, cookies) {
     const filter = (reaction, user) => user.id === client.user.id;
 
     try {
-        const reactions = await cookieMessage.awaitReactions(filter, {time: 1000});
+        //const reactions = await cookieMessage.awaitReactions(filter, {time: 1000});
+        const reactions = await cookieMessage.reactions 
+        console.log(`${cookieMessage.content} has ${reactions.size} cookies`);
+    
         console.log(`${cookieMessage.content} has ${reactions.size} cookies`);
     
         const cookieCount = reactions.size;

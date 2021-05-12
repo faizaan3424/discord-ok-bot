@@ -23,40 +23,39 @@ function cookieReaction(messages, cookies) {
 
           _context.prev = 2;
           _context.next = 5;
-          return regeneratorRuntime.awrap(cookieMessage.awaitReactions(filter, {
-            time: 1000
-          }));
+          return regeneratorRuntime.awrap(cookieMessage.reactions);
 
         case 5:
           reactions = _context.sent;
+          console.log("".concat(cookieMessage.content, " has ").concat(reactions.size, " cookies"));
           console.log("".concat(cookieMessage.content, " has ").concat(reactions.size, " cookies"));
           cookieCount = reactions.size;
           console.log("Cookie count is: ".concat(cookieCount));
 
           if (!(cookieCount === 0)) {
-            _context.next = 13;
+            _context.next = 14;
             break;
           }
 
           randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
-          _context.next = 13;
+          _context.next = 14;
           return regeneratorRuntime.awrap(cookieMessage.react(randomCookie));
 
-        case 13:
-          _context.next = 18;
+        case 14:
+          _context.next = 19;
           break;
 
-        case 15:
-          _context.prev = 15;
+        case 16:
+          _context.prev = 16;
           _context.t0 = _context["catch"](2);
           console.error(_context.t0);
 
-        case 18:
+        case 19:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[2, 15]]);
+  }, null, null, [[2, 16]]);
 }
 /*async function cookieReaction(messages, cookies) {
     let cookieCount;
