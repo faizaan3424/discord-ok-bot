@@ -103,18 +103,16 @@ client.on("message", function (message) {
 
 
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // React with cookie:
-  else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {} //message.reply("no u")
-    //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-    // Give last message cookie:
-
-  var cookieChannel = client.channels.cache.get("756599993481297951");
-  cookieChannel.messages.fetch({
-    limit: 5
-  }).then(function (messages) {
-    var todayDate = new Date().getUTCDate();
-    messages.forEach(function (cookieMessage) {
-      var cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-      if (todayDate !== cookieDate) cookieReaction(cookieMessage, cookies);
-    });
-  })["catch"](console.error);
+  else if (message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
+      var cookieChannel = client.channels.cache.get("756599993481297951");
+      cookieChannel.messages.fetch({
+        limit: 1
+      }).then(function (messages) {
+        var todayDate = new Date().getUTCDate();
+        messages.forEach(function (cookieMessage) {
+          var cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
+          if (todayDate !== cookieDate) cookieReaction(cookieMessage, cookies);
+        });
+      })["catch"](console.error);
+    }
 });
