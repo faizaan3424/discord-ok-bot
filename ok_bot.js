@@ -98,8 +98,8 @@ client.on("message", (message) => {
     }
 
 
-    // Give last message cookie:
-        let today = new Date().getUTCDay();
+    // Give last message cookiec:
+        let today = new Date();
         console.log(today)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
