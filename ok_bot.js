@@ -21,7 +21,7 @@ async function cookieReaction(messages, cookies) {
     
     // If the message has no "cookie" reactions, then react with a random cookie emoji
     console.log(`Cookie count outside is: ${cookieCount}`);
-    if(cookieCount == 0) await cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+    if(cookieCount === 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
 }
 
 client.on("ready", () => {
