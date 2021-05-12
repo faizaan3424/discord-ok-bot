@@ -7,9 +7,9 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-async function cookieReaction(messages, cookies) {
-    const cookieMessage = messages.first();
-    const filter = (reaction, user) => user.id === client.user.id;
+async function cookieReaction(cookieMessage, cookies) {
+    cookieMessage.reply("This is the last message!");
+    /*const filter = (reaction, user) => user.id === client.user.id;
 
     try {
         //const reactions = await cookieMessage.awaitReactions(filter, {time: 1000});
@@ -28,7 +28,7 @@ async function cookieReaction(messages, cookies) {
     }
     catch (error) {
         console.error(error);
-    }
+    }*/
 }
 
 /*async function cookieReaction(messages, cookies) {
@@ -104,7 +104,7 @@ client.on("message", (message) => {
         //console.log(date)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
-            cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages, cookies)).catch(console.error)
+            cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages.first(), cookies)).catch(console.error)
         //}
     },1 * 1000)
 });
