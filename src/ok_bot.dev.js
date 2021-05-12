@@ -10,21 +10,22 @@ function numberWithCommas(x) {
 }
 
 function cookieReaction(cookieMessage, cookies) {
-  var filter, reactions, randomCookie;
+  var randomCookie, filter, reactions;
   return regeneratorRuntime.async(function cookieReaction$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          //cookieMessage.reply("This is the last message!");
+          randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
+
           filter = function filter(reaction, user) {
             return user.id === client.user.id;
           };
 
-          _context.prev = 1;
-          _context.next = 4;
+          _context.prev = 2;
+          _context.next = 5;
           return regeneratorRuntime.awrap(cookieMessage.reactions.cache.size);
 
-        case 4:
+        case 5:
           reactions = _context.sent;
           console.log("Cookie count is: ".concat(reactions));
 
@@ -33,7 +34,6 @@ function cookieReaction(cookieMessage, cookies) {
             break;
           }
 
-          randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
           _context.next = 10;
           return regeneratorRuntime.awrap(cookieMessage.react(randomCookie));
 
@@ -43,7 +43,7 @@ function cookieReaction(cookieMessage, cookies) {
 
         case 12:
           _context.prev = 12;
-          _context.t0 = _context["catch"](1);
+          _context.t0 = _context["catch"](2);
           console.error(_context.t0);
 
         case 15:
@@ -51,7 +51,7 @@ function cookieReaction(cookieMessage, cookies) {
           return _context.stop();
       }
     }
-  }, null, null, [[1, 12]]);
+  }, null, null, [[2, 12]]);
 }
 /*async function cookieReaction(messages, cookies) {
     let cookieCount;
@@ -107,12 +107,14 @@ client.on("message", function (message) {
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     // Give last message cookie:
 
-  var today = new Date().getUTCDate(); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
-
   var cookieChannel = client.channels.cache.get("756599993481297951");
   cookieChannel.messages.fetch({
-    limit: 1
+    limit: 5
   }).then(function (messages) {
-    return cookieReaction(messages.first(), cookies);
-  })["catch"](console.error); //}
+    var todayDate = new Date().getUTCDate();
+    messages.forEach(function (cookieMessage) {
+      var cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
+      if (todayDate === cookieDate) cookieReaction(cookieMessage, cookies);
+    });
+  })["catch"](console.error);
 });

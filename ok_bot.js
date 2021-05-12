@@ -8,7 +8,7 @@ function numberWithCommas(x) {
 }
 
 async function cookieReaction(cookieMessage, cookies) {
-    //cookieMessage.reply("This is the last message!");
+    const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
     const filter = (reaction, user) => user.id === client.user.id;
 
     try {
@@ -16,10 +16,7 @@ async function cookieReaction(cookieMessage, cookies) {
         const reactions = await cookieMessage.reactions.cache.size 
         console.log(`Cookie count is: ${reactions}`);
     
-        if (reactions === 0) {
-            const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
-            await cookieMessage.react(randomCookie);
-        }
+        if (reactions === 0) await cookieMessage.react(randomCookie);
     }
     catch (error) {
         console.error(error);
@@ -94,9 +91,12 @@ client.on("message", (message) => {
 
 
     // Give last message cookie:
-        const today = new Date().getUTCDate();
-        //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
-            const cookieChannel = client.channels.cache.get("756599993481297951");
-            cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages.first(), cookies)).catch(console.error)
-        //}
+    const cookieChannel = client.channels.cache.get("756599993481297951");
+    cookieChannel.messages.fetch({limit: 5}).then(messages => {
+        const todayDate = new Date().getUTCDate();
+        messages.forEach(cookieMessage => {
+            const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
+            if(todayDate === cookieDate) cookieReaction(cookieMessage, cookies);
+        })
+    }).catch(console.error)
 });
