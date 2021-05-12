@@ -94,9 +94,9 @@ client.on("message", function (message) {
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // React with cookie:
   else if (message.channel == "766654092969771018" && message.author.id != "819932513144930314") {} //message.reply("no u")
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-    // Give last message cookiec:
+    // Give last message cookie:
 
-  var today = new Date();
+  var today = new Date().getUTCDate();
   console.log(today); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
   var cookieChannel = client.channels.cache.get("756599993481297951");
