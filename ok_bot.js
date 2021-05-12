@@ -85,13 +85,17 @@ client.on("message", (message) => {
 
     // React with cookie:
     else if(message.channel == "756599993481297951" && message.author.id != "819932513144930314") {
-        const cookieChannel = client.channels.cache.get("756599993481297951");
+        const todayDate = new Date().getUTCDate();
+        const cookieDate = new Date(message.createdTimestamp).getUTCDate();
+        if(todayDate !== cookieDate) cookieReaction(message, cookies);
+    }
+        /*const cookieChannel = client.channels.cache.get("756599993481297951");
         cookieChannel.messages.fetch({limit: 1}).then(messages => {
         const todayDate = new Date().getUTCDate();
         messages.forEach(cookieMessage => {
             const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
             if(todayDate !== cookieDate) cookieReaction(cookieMessage, cookies);
         })
-    }).catch(console.error)
+    }).catch(console.error)*/
     }
 });
