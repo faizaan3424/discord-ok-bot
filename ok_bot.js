@@ -93,4 +93,7 @@ client.on("message", (message) => {
 
     // Delete non-ok messages:
     if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
+
+    // Totally non-biased programming
+    if(message.mentions.has(client.user)) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");
 });
