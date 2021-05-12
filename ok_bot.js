@@ -96,7 +96,7 @@ client.on("message", (message) => {
         const todayDate = new Date().getUTCDate();
         messages.forEach(cookieMessage => {
             const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-            if(todayDate === cookieDate) cookieReaction(cookieMessage, cookies);
+            if(todayDate !== cookieDate) cookieReaction(cookieMessage, cookies);
         })
     }).catch(console.error)
 });

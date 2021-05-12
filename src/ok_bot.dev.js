@@ -114,7 +114,7 @@ client.on("message", function (message) {
     var todayDate = new Date().getUTCDate();
     messages.forEach(function (cookieMessage) {
       var cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-      if (todayDate === cookieDate) cookieReaction(cookieMessage, cookies);
+      if (todayDate !== cookieDate) cookieReaction(cookieMessage, cookies);
     });
   })["catch"](console.error);
 });
