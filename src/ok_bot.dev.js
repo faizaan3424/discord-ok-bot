@@ -8,16 +8,15 @@ var client = new Discord.Client();
 client.login(process.env.token); //console.log(process.env.okCount);
 // React to last message of day with cookie in staff chat
 
-cron.schedule('* * * * *', function () {
-  console.log("Hello, cron!");
-  /*const cookieChannel = client.channels.cache.get("756599993481297951");
-      cookieChannel.messages.fetch({limit: 2}).then(messages => {
-      const todayDate = new Date().getUTCDate();
-      messages.forEach(cookieMessage => {
-          const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-          if(todayDate !== cookieDate) cookieReaction(cookieMessage, cookies);
-      })
-  }).catch(console.error)*/
+cron.schedule('59 59 23 * *', function () {
+  var cookieChannel = client.channels.cache.get("756599993481297951");
+  cookieChannel.messages.fetch({
+    limit: 1
+  }).then(function (messages) {
+    //const todayDate = new Date().getUTCDate();
+    //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
+    cookieReaction(messages.first(), cookies);
+  })["catch"](console.error);
 });
 
 function numberWithCommas(x) {
