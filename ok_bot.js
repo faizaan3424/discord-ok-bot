@@ -6,7 +6,7 @@ client.login(process.env.token);
 
 // React to last message of day with cookie in staff chat
 cron.schedule('59 59 23 * * *', () => {
-    const cookieChannel = client.channels.cache.get("756599993481297951");
+    const cookieChannel = client.channels.cache.get("766654092969771018");
         cookieChannel.messages.fetch({limit: 1}).then(messages => {
         //const todayDate = new Date().getUTCDate();
         //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();

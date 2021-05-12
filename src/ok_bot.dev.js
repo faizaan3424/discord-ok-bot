@@ -9,7 +9,7 @@ client.login(process.env.token); //console.log(process.env.okCount);
 // React to last message of day with cookie in staff chat
 
 cron.schedule('59 59 23 * * *', function () {
-  var cookieChannel = client.channels.cache.get("756599993481297951");
+  var cookieChannel = client.channels.cache.get("766654092969771018");
   cookieChannel.messages.fetch({
     limit: 1
   }).then(function (messages) {
