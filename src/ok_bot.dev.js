@@ -10,37 +10,48 @@ function numberWithCommas(x) {
 }
 
 function cookieReaction(cookieMessage, cookies) {
+  var filter, reactions, randomCookie;
   return regeneratorRuntime.async(function cookieReaction$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          cookieMessage.reply("This is the last message!");
-          /*const filter = (reaction, user) => user.id === client.user.id;
-            try {
-              //const reactions = await cookieMessage.awaitReactions(filter, {time: 1000});
-              const reactions = await cookieMessage.reactions 
-              console.log(`${cookieMessage.content} has ${reactions.size} cookies`);
-          
-              console.log(`${cookieMessage.content} has ${reactions.size} cookies`);
-          
-              const cookieCount = reactions.size;
-              console.log(`Cookie count is: ${cookieCount}`);
-          
-              if (cookieCount === 0) {
-                  const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
-                  await cookieMessage.react(randomCookie);
-              }
-          }
-          catch (error) {
-              console.error(error);
-          }*/
+          //cookieMessage.reply("This is the last message!");
+          filter = function filter(reaction, user) {
+            return user.id === client.user.id;
+          };
 
-        case 1:
+          _context.prev = 1;
+          _context.next = 4;
+          return regeneratorRuntime.awrap(cookieMessage.reactions.cache.size);
+
+        case 4:
+          reactions = _context.sent;
+          console.log("Cookie count is: ".concat(reactions));
+
+          if (!(reactions === 0)) {
+            _context.next = 10;
+            break;
+          }
+
+          randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
+          _context.next = 10;
+          return regeneratorRuntime.awrap(cookieMessage.react(randomCookie));
+
+        case 10:
+          _context.next = 15;
+          break;
+
+        case 12:
+          _context.prev = 12;
+          _context.t0 = _context["catch"](1);
+          console.error(_context.t0);
+
+        case 15:
         case "end":
           return _context.stop();
       }
     }
-  });
+  }, null, null, [[1, 12]]);
 }
 /*async function cookieReaction(messages, cookies) {
     let cookieCount;
@@ -96,8 +107,7 @@ client.on("message", function (message) {
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     // Give last message cookie:
 
-  var today = new Date().getUTCDate();
-  console.log(today); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
+  var today = new Date().getUTCDate(); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
   var cookieChannel = client.channels.cache.get("756599993481297951");
   cookieChannel.messages.fetch({
