@@ -30,7 +30,7 @@ function cookieReaction(messages, cookies) {
         case 5:
           reactions = _context.sent;
           console.log("".concat(cookieMessage.content, " has ").concat(reactions.size, " cookies"));
-          cookieCount = collected.size;
+          cookieCount = reactions.size;
           console.log("Cookie count is: ".concat(cookieCount));
 
           if (!(cookieCount === 0)) {

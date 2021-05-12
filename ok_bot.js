@@ -15,7 +15,7 @@ async function cookieReaction(messages, cookies) {
         const reactions = await cookieMessage.awaitReactions(filter, {time: 1000});
         console.log(`${cookieMessage.content} has ${reactions.size} cookies`);
     
-        const cookieCount = collected.size;
+        const cookieCount = reactions.size;
         console.log(`Cookie count is: ${cookieCount}`);
     
         if (cookieCount === 0) {
