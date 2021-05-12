@@ -96,27 +96,13 @@ client.on("message", function (message) {
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     // Give last message cookie:
 
-  var interval = setInterval(function _callee() {
-    var date, cookieChannel;
-    return regeneratorRuntime.async(function _callee$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            date = new Date(); //console.log(date)
-            //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
+  var today = new Date().getDay();
+  console.log(today); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
-            cookieChannel = client.channels.cache.get("756599993481297951");
-            cookieChannel.messages.fetch({
-              limit: 1
-            }).then(function (messages) {
-              return cookieReaction(messages.first(), cookies);
-            })["catch"](console.error); //}
-
-          case 3:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    });
-  }, 1 * 1000);
+  var cookieChannel = client.channels.cache.get("756599993481297951");
+  cookieChannel.messages.fetch({
+    limit: 1
+  }).then(function (messages) {
+    return cookieReaction(messages.first(), cookies);
+  })["catch"](console.error); //}
 });

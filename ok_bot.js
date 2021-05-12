@@ -105,5 +105,4 @@ client.on("message", (message) => {
             const cookieChannel = client.channels.cache.get("756599993481297951");
             cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages.first(), cookies)).catch(console.error)
         //}
-    },1 * 1000)
 });
