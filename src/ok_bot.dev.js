@@ -10,7 +10,7 @@ function numberWithCommas(x) {
 }
 
 function cookieReaction(messages, cookies) {
-  var cookieCount, cookieMessage, filter;
+  var cookieMessage, filter, reactions, cookieCount, randomCookie;
   return regeneratorRuntime.async(function cookieReaction$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -19,30 +19,62 @@ function cookieReaction(messages, cookies) {
 
           filter = function filter(reaction, user) {
             return user.id === client.user.id;
-          }; // Check for "cookie" reactions (reactions from bot that are cookie emojis)
+          };
 
-
-          _context.next = 4;
+          _context.prev = 2;
+          _context.next = 5;
           return regeneratorRuntime.awrap(cookieMessage.awaitReactions(filter, {
             time: 1000
-          }).then(function (collected) {
-            console.log("".concat(cookieMessage.content, " has ").concat(collected.size, " cookies"));
-            cookieCount = collected.size;
-            console.log("Cookie count inside is: ".concat(cookieCount));
-          })["catch"](console.error));
+          }));
 
-        case 4:
-          // If the message has no "cookie" reactions, then react with a random cookie emoji
-          console.log("Cookie count outside is: ".concat(cookieCount));
-          if (cookieCount === 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)])["catch"](console.error);
+        case 5:
+          reactions = _context.sent;
+          console.log("".concat(cookieMessage.content, " has ").concat(reactions.size, " cookies"));
+          cookieCount = collected.size;
+          console.log("Cookie count is: ".concat(cookieCount));
 
-        case 6:
+          if (!(cookieCount === 0)) {
+            _context.next = 13;
+            break;
+          }
+
+          randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
+          _context.next = 13;
+          return regeneratorRuntime.awrap(cookieMessage.react(randomCookie));
+
+        case 13:
+          _context.next = 18;
+          break;
+
+        case 15:
+          _context.prev = 15;
+          _context.t0 = _context["catch"](2);
+          console.error(_context.t0);
+
+        case 18:
         case "end":
           return _context.stop();
       }
     }
-  });
+  }, null, null, [[2, 15]]);
 }
+/*async function cookieReaction(messages, cookies) {
+    let cookieCount;
+    const cookieMessage = messages.first();
+    const filter = (reaction, user) => user.id === client.user.id
+
+    // Check for "cookie" reactions (reactions from bot that are cookie emojis)
+    await cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
+        console.log(`${cookieMessage.content} has ${collected.size} cookies`);
+        cookieCount = collected.size;
+        console.log(`Cookie count inside is: ${cookieCount}`);
+        }).catch(console.error);
+    
+    // If the message has no "cookie" reactions, then react with a random cookie emoji
+    console.log(`Cookie count outside is: ${cookieCount}`);
+    if(cookieCount === 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
+}*/
+
 
 client.on("ready", function () {
   console.log("Connected as: " + client.user.tag);

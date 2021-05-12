@@ -8,8 +8,29 @@ function numberWithCommas(x) {
 }
 
 async function cookieReaction(messages, cookies) {
+    const cookieMessage = messages.first();
+    const filter = (reaction, user) => user.id === client.user.id;
+
+    try {
+        const reactions = await cookieMessage.awaitReactions(filter, {time: 1000});
+        console.log(`${cookieMessage.content} has ${reactions.size} cookies`);
+    
+        const cookieCount = collected.size;
+        console.log(`Cookie count is: ${cookieCount}`);
+    
+        if (cookieCount === 0) {
+            const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
+            await cookieMessage.react(randomCookie);
+        }
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
+/*async function cookieReaction(messages, cookies) {
     let cookieCount;
-    let cookieMessage = messages.first();
+    const cookieMessage = messages.first();
     const filter = (reaction, user) => user.id === client.user.id
 
     // Check for "cookie" reactions (reactions from bot that are cookie emojis)
@@ -22,7 +43,7 @@ async function cookieReaction(messages, cookies) {
     // If the message has no "cookie" reactions, then react with a random cookie emoji
     console.log(`Cookie count outside is: ${cookieCount}`);
     if(cookieCount === 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-}
+}*/
 
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
