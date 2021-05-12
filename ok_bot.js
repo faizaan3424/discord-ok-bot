@@ -99,9 +99,8 @@ client.on("message", (message) => {
 
 
     // Give last message cookie:
-    var interval = setInterval(async () => {
-        let date = new Date();
-        //console.log(date)
+        let today = new Date().getDay();
+        console.log(today)
         //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
             const cookieChannel = client.channels.cache.get("756599993481297951");
             cookieChannel.messages.fetch({limit: 1}).then(messages => cookieReaction(messages.first(), cookies)).catch(console.error)
