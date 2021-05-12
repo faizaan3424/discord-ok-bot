@@ -96,7 +96,7 @@ client.on("message", function (message) {
     //message.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
     // Give last message cookie:
 
-  var today = new Date().getDay();
+  var today = new Date().getUTCDay();
   console.log(today); //if(date.getHours === 8 && date.getMinutes === 57, date.getSeconds === 0) {
 
   var cookieChannel = client.channels.cache.get("756599993481297951");
