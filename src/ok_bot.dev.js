@@ -118,5 +118,6 @@ client.on("message", function (message) {
 
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // Totally non-biased programming
 
-  if (message.mentions.has(client.user)) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");
+  if (message.mentions.has(client.user) && message.mentions.members.size == 1) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");
+  ;
 });
