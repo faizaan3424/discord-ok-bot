@@ -10,12 +10,13 @@ client.login(process.env.token); //console.log(process.env.okCount);
 
 cron.schedule('59 59 23 * * *', function () {
   var cookieChannel = client.channels.cache.get("766654092969771018");
+  console.log("Cookie time!");
   cookieChannel.messages.fetch({
     limit: 1
   }).then(function (messages) {
     //const todayDate = new Date().getUTCDate();
     //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-    cookieReaction(messages.first(), cookies);
+    cookieReaction(messages.first());
   })["catch"](console.error);
 });
 
@@ -23,49 +24,50 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function cookieReaction(cookieMessage, cookies) {
-  var randomCookie, filter, reactions;
+function cookieReaction(cookieMessage) {
+  var cookies, randomCookie, filter, reactions;
   return regeneratorRuntime.async(function cookieReaction$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"];
           randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
 
           filter = function filter(reaction, user) {
             return user.id === client.user.id;
           };
 
-          _context.prev = 2;
-          _context.next = 5;
+          _context.prev = 3;
+          _context.next = 6;
           return regeneratorRuntime.awrap(cookieMessage.reactions.cache.size);
 
-        case 5:
+        case 6:
           reactions = _context.sent;
           console.log("Cookie count is: ".concat(reactions));
 
           if (!(reactions === 0)) {
-            _context.next = 10;
+            _context.next = 11;
             break;
           }
 
-          _context.next = 10;
+          _context.next = 11;
           return regeneratorRuntime.awrap(cookieMessage.react(randomCookie));
 
-        case 10:
-          _context.next = 15;
+        case 11:
+          _context.next = 16;
           break;
 
-        case 12:
-          _context.prev = 12;
-          _context.t0 = _context["catch"](2);
+        case 13:
+          _context.prev = 13;
+          _context.t0 = _context["catch"](3);
           console.error(_context.t0);
 
-        case 15:
+        case 16:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[2, 12]]);
+  }, null, null, [[3, 13]]);
 }
 /*async function cookieReaction(messages, cookies) {
     let cookieCount;
@@ -96,9 +98,8 @@ client.on("message", function (message) {
     return new Promise(function (res) {
       return setTimeout(res, ms);
     });
-  };
+  }; // Count ok's
 
-  var cookies = ["🍪", "<:cookie2:822168019953516585>", "<:cookie3:832742413982105691>", "<:cookie4:841334090774347796>", "<:cookie5:841334348573048862>", "<:cookie6:841334585786761236>", "<:cookie7:841334692271751228>", "<:cookie8:841335151837446154>", "<:cookie9:841335245394935849>", "<:cookie10:841335325879435304>"]; // Count ok's
 
   if (message.content.toLowerCase() == "ok") {
     var okChannel = client.channels.cache.get("819925987268755456");
@@ -113,7 +114,8 @@ client.on("message", function (message) {
       okCounterChannel.send(okCount);
     })["catch"](console.error); //process.env.okCount = toString(okCount);
     //console.log(`Ok count modified to ${process.env.okCount}`);
-  } // Delete non-ok messages:
+  } // React to Cookie Messages:
+  else if (message.content.includes("cookie")) cookieReaction(message); // Delete non-ok messages:
 
 
   if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message["delete"](); // Totally non-biased programming

@@ -7,10 +7,11 @@ client.login(process.env.token);
 // React to last message of day with cookie in staff chat
 cron.schedule('59 59 23 * * *', () => {
     const cookieChannel = client.channels.cache.get("766654092969771018");
-        cookieChannel.messages.fetch({limit: 1}).then(messages => {
-        //const todayDate = new Date().getUTCDate();
-        //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-        cookieReaction(messages.first(), cookies);
+    console.log("Cookie time!");
+    cookieChannel.messages.fetch({limit: 1}).then(messages => {
+    //const todayDate = new Date().getUTCDate();
+    //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
+    cookieReaction(messages.first());
     }).catch(console.error)
 });
 
@@ -18,7 +19,20 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-async function cookieReaction(cookieMessage, cookies) {
+async function cookieReaction(cookieMessage) {
+    const cookies = [
+        "🍪",
+        "<:cookie2:822168019953516585>",
+        "<:cookie3:832742413982105691>",
+        "<:cookie4:841334090774347796>",
+        "<:cookie5:841334348573048862>",
+        "<:cookie6:841334585786761236>",
+        "<:cookie7:841334692271751228>",
+        "<:cookie8:841335151837446154>",
+        "<:cookie9:841335245394935849>",
+        "<:cookie10:841335325879435304>",
+    ]
+
     const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
     const filter = (reaction, user) => user.id === client.user.id;
 
@@ -59,18 +73,6 @@ client.on("ready", () => {
 client.on("message", (message) => {
     const devChannel = client.channels.cache.get("756599993481297951");
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    const cookies = [
-        "🍪",
-        "<:cookie2:822168019953516585>",
-        "<:cookie3:832742413982105691>",
-        "<:cookie4:841334090774347796>",
-        "<:cookie5:841334348573048862>",
-        "<:cookie6:841334585786761236>",
-        "<:cookie7:841334692271751228>",
-        "<:cookie8:841335151837446154>",
-        "<:cookie9:841335245394935849>",
-        "<:cookie10:841335325879435304>",
-    ]
 
     // Count ok's
     if(message.content.toLowerCase() == "ok") {
@@ -89,7 +91,8 @@ client.on("message", (message) => {
         
         //process.env.okCount = toString(okCount);
         //console.log(`Ok count modified to ${process.env.okCount}`);
-    }
+    } // React to Cookie Messages:
+    else if (message.content.includes("cookie")) cookieReaction(message);
 
     // Delete non-ok messages:
     if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
