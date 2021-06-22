@@ -48,23 +48,6 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-/*async function cookieReaction(messages, cookies) {
-    let cookieCount;
-    const cookieMessage = messages.first();
-    const filter = (reaction, user) => user.id === client.user.id
-
-    // Check for "cookie" reactions (reactions from bot that are cookie emojis)
-    await cookieMessage.awaitReactions(filter, {time: 1000}).then(collected => {
-        console.log(`${cookieMessage.content} has ${collected.size} cookies`);
-        cookieCount = collected.size;
-        console.log(`Cookie count inside is: ${cookieCount}`);
-        }).catch(console.error);
-    
-    // If the message has no "cookie" reactions, then react with a random cookie emoji
-    console.log(`Cookie count outside is: ${cookieCount}`);
-    if(cookieCount === 0) cookieMessage.react(cookies[Math.floor(Math.random() * cookies.length)]).catch(console.error);
-}*/
-
 client.on("ready", () => {
     console.log("Connected as: " + client.user.tag);
     client.user.setActivity("please help! staff has kidnapped me and made me their slave...");
