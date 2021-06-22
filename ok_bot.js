@@ -4,21 +4,6 @@ const client = new Discord.Client();
 client.login(process.env.token);
 //console.log(process.env.okCount);
 
-// React to last message of day with cookie in staff chat
-cron.schedule('59 59 23 * * *', () => {
-    const cookieChannel = client.channels.cache.get("766654092969771018");
-    console.log("Cookie time!");
-    cookieChannel.messages.fetch({limit: 1}).then(messages => {
-    //const todayDate = new Date().getUTCDate();
-    //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-    cookieReaction(messages.first());
-    }).catch(console.error)
-});
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
 async function cookieReaction(cookieMessage) {
     const cookies = [
         "🍪",
@@ -46,6 +31,21 @@ async function cookieReaction(cookieMessage) {
     catch (error) {
         console.error(error);
     }
+}
+
+// React to last message of day with cookie in staff chat
+cron.schedule('59 59 23 * * *', () => {
+    const cookieChannel = client.channels.cache.get("766654092969771018");
+    console.log("Cookie time!");
+    cookieChannel.messages.fetch({limit: 1}).then(messages => {
+    //const todayDate = new Date().getUTCDate();
+    //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
+    cookieReaction(messages.first());
+    }).catch(console.error)
+});
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 /*async function cookieReaction(messages, cookies) {
@@ -92,7 +92,7 @@ client.on("message", (message) => {
         //process.env.okCount = toString(okCount);
         //console.log(`Ok count modified to ${process.env.okCount}`);
     } // React to Cookie Messages:
-    else if (message.content.includes("cookie")) cookieReaction(message);
+    //else if (message.content.includes("cookie")) cookieReaction(message);
 
     // Delete non-ok messages:
     if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
