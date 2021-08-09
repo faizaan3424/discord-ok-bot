@@ -80,7 +80,7 @@ client.on("message", (message) => {
     // Delete non-ok messages:
     if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
 
-    if (message.channel == "756599993481297951" && "ok? " in message.content) {
+    if (message.channel == "756599993481297951" && message.content.includes("ok? ")) {
         const staffChannel = client.channels.cache.get("756599993481297951");
         staffChannel.send(message.content.slice(5));
     }
