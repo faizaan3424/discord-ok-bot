@@ -82,7 +82,7 @@ client.on("message", (message) => {
 
     if (message.channel == "756599993481297951" && message.content.includes("ok? ")) {
         const staffChannel = client.channels.cache.get("756599993481297951");
-        staffChannel.send(message.content.slice(5));
+        staffChannel.send(message.content.slice(4));
     }
 
     // Totally non-biased programming
