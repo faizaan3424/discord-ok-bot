@@ -23,9 +23,9 @@ async function cookieReaction(cookieMessage) {
 
     try {
         //const reactions = await cookieMessage.awaitReactions(filter, {time: 1000});
-        const reactions = await cookieMessage.reactions.cache.size 
+        const reactions = await cookieMessage.reactions.cache.size
         console.log(`Cookie count is: ${reactions}`);
-    
+
         if (reactions === 0) await cookieMessage.react(randomCookie);
     }
     catch (error) {
@@ -37,10 +37,10 @@ async function cookieReaction(cookieMessage) {
 cron.schedule('59 59 23 * * *', () => {
     const cookieChannel = client.channels.cache.get("766654092969771018");
     console.log("Cookie time!");
-    cookieChannel.messages.fetch({limit: 1}).then(messages => {
-    //const todayDate = new Date().getUTCDate();
-    //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
-    cookieReaction(messages.first());
+    cookieChannel.messages.fetch({ limit: 1 }).then(messages => {
+        //const todayDate = new Date().getUTCDate();
+        //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
+        cookieReaction(messages.first());
     }).catch(console.error)
 });
 
@@ -58,33 +58,33 @@ client.on("message", (message) => {
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
     // Count ok's
-    if(message.content.toLowerCase() == "ok") {
+    if (message.content.toLowerCase() == "ok") {
         const okChannel = client.channels.cache.get("819925987268755456");
         const okCounterChannel = client.channels.cache.get("821395045256003604");
 
         okCounterChannel.messages.fetch({ limit: 1 }).then(messages => {
-        let lastMessage = messages.first();
-        okCount = parseInt(lastMessage.content) + 1;
+            let lastMessage = messages.first();
+            okCount = parseInt(lastMessage.content) + 1;
 
-        console.log(`Ok count is now at: ${okCount}`);
-        okChannel.send(`${message.author}, ok counter is now at ${numberWithCommas(okCount)}!`);
-        okCounterChannel.send(okCount);
+            console.log(`Ok count is now at: ${okCount}`);
+            okChannel.send(`${message.author}, ok counter is now at ${numberWithCommas(okCount)}!`);
+            okCounterChannel.send(okCount);
         })
-        .catch(console.error);
-        
+            .catch(console.error);
+
         //process.env.okCount = toString(okCount);
         //console.log(`Ok count modified to ${process.env.okCount}`);
     } // React to Cookie Messages:
     //else if (message.content.includes("cookie")) cookieReaction(message);
 
     // Delete non-ok messages:
-    if(message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
+    if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
 
-    if (message.channel == "756599993481297951" && message.content.includes("ok? ") && message.) {
+    if (message.channel == "756599993481297951" && message.content.includes("ok? ") && message.author.id == "648204656853647371") {
         const staffChannel = client.channels.cache.get("766654092969771018");
         staffChannel.send(message.content.slice(4));
     }
 
     // Totally non-biased programming
-    if(message.mentions.has(client.user) && message.mentions.members.size == 1) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");;
+    if (message.mentions.has(client.user) && message.mentions.members.size == 1) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");;
 });
