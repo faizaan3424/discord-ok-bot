@@ -88,5 +88,5 @@ client.on("message", (message) => {
     }
 
     // Totally non-biased programming
-    if (message.mentions.has(client.user) && message.mentions.members.size == 1) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");;
+    if (message.mentions.has(client.user) && message.mentions.members.size == 1 && message.author.id != client.user.id) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");;
 });
