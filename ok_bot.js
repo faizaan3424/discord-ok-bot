@@ -81,9 +81,9 @@ client.on("message", (message) => {
     if (message.channel == "819925987268755456" && message.content.toLowerCase() != "ok" && message.author.id != "819932513144930314") message.delete();
 
     // Auto-responder for staff chat:
-    if (message.channel == "756599993481297951" && message.content.includes("ok? ") && message.author.id == "648204656853647371") {
-        const staffChannel = client.channels.cache.get("766654092969771018");
-        staffChannel.send(message.content.slice(4));
+    if (message.content.includes("ok? ") && message.author.id == "648204656853647371") {
+        //const staffChannel = client.channels.cache.get("766654092969771018");
+        message.channel.send(message.content.slice(4));
         message.delete();
     }
 
