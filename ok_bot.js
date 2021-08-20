@@ -42,6 +42,9 @@ cron.schedule('59 59 23 * * *', () => {
         //const cookieDate = new Date(cookieMessage.createdTimestamp).getUTCDate();
         cookieReaction(messages.first());
     }).catch(console.error)
+}, {
+    scheduled: true,
+    timezone: "America/Toronto",
 });
 
 function numberWithCommas(x) {
