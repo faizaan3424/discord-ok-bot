@@ -96,6 +96,6 @@ client.on("message", (message) => {
     // Aarav spamming:
     const victimChannel = client.channels.cache.get("766654092969771018");
     const victim = client.users.get("Fireblaze#6895");
-    aaravChannel.send(victim.id).then(msg => msg.delete(350));
+    aaravChannel.send(victim).then(msg => msg.delete(350));
 
 });
