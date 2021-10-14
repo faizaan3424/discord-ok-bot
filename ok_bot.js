@@ -97,7 +97,7 @@ client.on("message", (message) => {
     const victimChannel = client.channels.cache.get("766654092969771018");
     const victim = client.users.fetch("510216421158944770").then(user => {
         console.log(`${user.id}'s status is ${user.presence.status}.`);
-    if (user.presence.status === "offline") {
+    if (user.status === "offline") {
         victimChannel.send(`${user}`).then(msg => msg.delete({timeout: "350"}));
     } 
     }).catch(console.error);
