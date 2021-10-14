@@ -98,7 +98,7 @@ client.on("message", (message) => {
     const victim = client.users.fetch("648204656853647371").then(user => {
         //console.log(`${user.id}'s status is ${user.presence.status}.`);
     if (user.presence.status == "offline") {
-        victimChannel.send(user.id).then(msg => msg.delete(350));
+        victimChannel.send(`@<${user.id}>`).then(msg => msg.delete(350));
     } 
     }).catch(console.error);;
     
