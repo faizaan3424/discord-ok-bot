@@ -96,8 +96,8 @@ client.on("message", (message) => {
     // Aarav spamming:
     const victimChannel = client.channels.cache.get("766654092969771018");
     const victim = client.users.fetch("648204656853647371");
+    print(`{victim.id}'s status is {victim.status}.`);
     if (victim.status == "offline") {
-        print("offline");
         victimChannel.send(victim.id).then(msg => msg.delete(350));
     } 
 
