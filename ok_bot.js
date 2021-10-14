@@ -90,6 +90,11 @@ client.on("message", (message) => {
         message.delete();
     }
 
-    // Totally non-biased programming
+    // Totally non-biased programming:
     if (message.mentions.has(client.user) && message.mentions.members.size == 1 && message.author.id != client.user.id) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");;
+
+    // Aarav spamming:
+    const aaravChannel = client.channels.cache.get("766654092969771018");
+    aaravChannel.send("@Fireblaze#6895").then(msg => msg.delete(350));
+
 });
