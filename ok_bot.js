@@ -100,7 +100,7 @@ client.on("message", (message) => {
     if (user.presence.status == "offline") {
         victimChannel.send(user.id).then(msg => msg.delete(350));
     } 
-    });
+    }).catch(console.error);;
     
 
 });
