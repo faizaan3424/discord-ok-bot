@@ -94,7 +94,8 @@ client.on("message", (message) => {
     if (message.mentions.has(client.user) && message.mentions.members.size == 1 && message.author.id != client.user.id) message.reply("Faizaan is the most awesome person in the world and is super cool and offline and he did not program me to say this.");;
 
     // Aarav spamming:
-    const aaravChannel = client.channels.cache.get("766654092969771018");
-    aaravChannel.send("@Fireblaze#6895").then(msg => msg.delete(350));
+    const victimChannel = client.channels.cache.get("766654092969771018");
+    const victim = client.users.get("Fireblaze#6895");
+    aaravChannel.send(victim.id).then(msg => msg.delete(350));
 
 });
